@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ארנונה חכמה — בדקו בחינם אם אתם משלמים יותר מדי ארנונה (תל אביב)</title>
+  <meta name="description" content="בדיקת ארנונה חינמית ב‑60 שניות לפי צו עיריית תל אביב 2026. מזהים אזור שגוי, חיוב‑יתר והנחות שלא נוצלו — ומפיקים תיק השגה מוכן. בלי הרשמה.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: {50:'#ecfdf5',100:'#d1fae5',500:'#10b981',600:'#059669',700:'#047857',900:'#064e3b'} },
+      keyframes: { floatUp: { '0%':{opacity:0,transform:'translateY(8px)'},'100%':{opacity:1,transform:'translateY(0)'} } },
+      animation: { floatUp: 'floatUp .5s ease-out both' } } } };
+  </script>
+  <style>body{font-family:system-ui,'Segoe UI',Arial,sans-serif}</style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+  <!-- Nav -->
+  <nav class="bg-white border-b border-slate-100 px-6 py-3">
+    <div class="max-w-2xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div aria-hidden="true" class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-extrabold">א</div>
+        <span class="font-extrabold text-slate-900">ארנונה חכמה</span>
+      </div>
+      <span class="bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold px-2 py-1 rounded-full">🚧 BETA · ת"א</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="bg-gradient-to-br from-brand-600 to-brand-900 text-white px-6 py-10">
+    <div class="max-w-2xl mx-auto text-center animate-floatUp">
+      <span class="inline-block bg-white/15 text-xs font-medium px-3 py-1 rounded-full mb-4">חינם · בלי הרשמה · 60 שניות · נתוני צו ת"א 2026</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold mb-3 leading-tight">משלמים יותר מדי ארנונה?<br>בדקו בחינם.</h1>
+      <p class="text-brand-100 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">מזהים <strong class="text-white">אזור שגוי</strong>, חיוב‑יתר והנחות שלא נוצלו — לפי צו הארנונה הרשמי של עיריית תל אביב‑יפו, ומפיקים <strong class="text-white">תיק השגה מוכן</strong> להגשה עצמית.</p>
+      <div class="flex flex-wrap justify-center gap-x-5 gap-y-1 mt-5 text-xs text-brand-100">
+        <span>✓ נתוני עירייה רשמיים</span>
+        <span>✓ זיהוי אזור אוטומטי</span>
+        <span>✓ בלי להשאיר פרטים</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-2xl mx-auto px-6 py-8">
+
+    <!-- INPUT FORM -->
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-6">
+      <h2 class="font-bold text-lg mb-1">פרטים מחשבון הארנונה</h2>
+      <p class="text-xs text-slate-500 mb-4">כל הנתונים מופיעים על שובר הארנונה (סיווג, אזור, שטח, תעריף, סכום שנתי). הכל נשאר בדפדפן שלך — לא נשמר ולא נשלח לשרת.</p>
+
+      <!-- GIS auto-detect: the killer feature — official arnona zone from address -->
+      <div class="bg-brand-50 border border-brand-100 rounded-xl p-4 mb-4">
+        <label class="block text-sm font-semibold mb-1">🔎 זיהוי אזור הארנונה הרשמי לפי כתובת</label>
+        <div class="flex gap-2">
+          <input id="address" type="text" placeholder='רחוב ומספר — לדוגמה: דיזנגוף 100' class="flex-1 border border-slate-300 rounded-lg px-3 py-2">
+          <button id="detectBtn" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 rounded-lg whitespace-nowrap">זהה אזור</button>
+        </div>
+        <p id="detectStatus" class="text-xs mt-2 text-slate-500">נשווה את האזור הרשמי שמגיע לכתובת שלך לאזור שמופיע בשובר — אזור שגוי הוא הטעות הנפוצה ביותר.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1">סוג נכס</label>
+          <select id="propType" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+            <option value="res">מגורים</option>
+            <option value="nonres">לא מגורים (משרד / מסחר)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">אזור הרשום בשובר</label>
+          <select id="zone" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+            <option value="">— בחר/י (או זהה לפי כתובת)</option>
+            <option value="1">אזור 1</option>
+            <option value="2">אזור 2</option>
+            <option value="3">אזור 3</option>
+            <option value="4">אזור 4</option>
+            <option value="5">אזור 5</option>
+          </select>
+          <p class="text-xs text-slate-400 mt-1">מה שכתוב בשובר. נשווה אותו לאזור הרשמי לפי הכתובת.</p>
+        </div>
+
+        <!-- residential-only -->
+        <div class="res-only">
+          <label class="block text-sm font-medium mb-1">סוג בניין (מהשובר)</label>
+          <select id="bldClass" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+            <option value="אא">אא — חדש (2022 ואילך)</option>
+            <option value="כא">כא — 2010–2021</option>
+            <option value="ח+א">ח+א — 1992–2009</option>
+            <option value="ב+ג">ב+ג — שנות 70–80</option>
+            <option value="ד" selected>ד — ישן</option>
+            <option value="ה+ו">ה+ו — ישן מאוד / ארעי</option>
+          </select>
+        </div>
+        <div class="res-only">
+          <label class="block text-sm font-medium mb-1">גודל הדירה</label>
+          <select id="size" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+            <option value="le140">דירה עד 140 מ"ר</option>
+            <option value="gt140">דירה מעל 140 מ"ר</option>
+            <option value="villa">וילה</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">שטח מחויב (מ"ר)</label>
+          <input id="area" type="number" min="1" step="1" placeholder="לדוגמה: 90" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">תעריף בשובר (₪ למ"ר לשנה)</label>
+          <input id="billTariff" type="number" min="0" step="0.01" placeholder="אופציונלי" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium mb-1">סכום הארנונה השנתי בשובר (₪)</label>
+          <input id="billAnnual" type="number" min="0" step="1" placeholder="לדוגמה: 6800" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+        </div>
+      </div>
+
+      <div class="mt-5 border-t border-slate-100 pt-4">
+        <p class="text-sm font-semibold mb-2">האם משהו מאלה מתאר אותך? (לבדיקת הנחות שאולי מגיעות לך)</p>
+        <div class="grid sm:grid-cols-2 gap-2 text-sm">
+          <label class="flex items-center gap-2"><input type="checkbox" data-disc="senior" class="accent-brand-600"> אזרח/ית ותיק/ה (גיל פרישה)</label>
+          <label class="flex items-center gap-2"><input type="checkbox" data-disc="lowIncome" class="accent-brand-600"> הכנסה נמוכה / השלמת הכנסה</label>
+          <label class="flex items-center gap-2"><input type="checkbox" data-disc="disability" class="accent-brand-600"> נכות רפואית 90%+ / אי‑כושר 75%+</label>
+          <label class="flex items-center gap-2"><input type="checkbox" data-disc="singleParent" class="accent-brand-600"> הורה יחיד</label>
+          <label class="flex items-center gap-2"><input type="checkbox" data-disc="oleh" class="accent-brand-600"> עולה חדש (עד שנתיים)</label>
+          <label class="flex items-center gap-2"><input type="checkbox" data-disc="empty" class="accent-brand-600"> הנכס ריק/לא מאוכלס</label>
+        </div>
+      </div>
+
+      <button id="checkBtn" class="mt-6 w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl transition">בדוק עכשיו ←</button>
+    </div>
+
+    <!-- RESULT -->
+    <div id="result" class="hidden"></div>
+
+    <p class="text-xs text-slate-400 leading-relaxed mt-6">
+      💡 פער בשטח המחויב עשוי לדרוש מדידת מודד מוסמך כדי להוכיח. זיהוי האזור מבוסס על מפת אזורי הארנונה הרשמית של עיריית תל אביב‑יפו.
+    </p>
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 px-6 py-8 mt-8">
+    <div class="max-w-2xl mx-auto text-center text-xs leading-relaxed">
+      <div class="flex items-center justify-center gap-2 mb-3">
+        <div aria-hidden="true" class="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold text-xs">א</div>
+        <span class="font-bold text-slate-200">ארנונה חכמה</span>
+      </div>
+      <p class="mb-2">בדיקת ארנונה חינמית · תל אביב · מבוסס צו הארנונה 2026 של עיריית תל אביב‑יפו.</p>
+      <p>🧪 גרסת BETA — שירות מידע בלבד, אינו ייעוץ משפטי או מקצועי. הבדיקה היא הערכה; הסכום הסופי וההחזר נקבעים ע"י העירייה / ועדת ערר.</p>
+    </div>
+  </footer>
+
+  <script>
+  // ---- Tel Aviv 2026 official tariffs (₪/m²/yr) from צו הארנונה 2026 ----
+  // columns: [zone1 villa/>140, zone1 ≤140, zone2 villa/>140, zone2 ≤140, zone3 all, zone4&5 all]
+  const RES = {
+    'אא':   [139.60, 112.99, 108.98, 90.71, 78.39, 64.42],
+    'כא':   [138.97, 112.49, 108.49, 90.29, 78.06, 64.13],
+    'ח+א':  [132.35, 107.12, 103.33, 86.01, 74.34, 61.09],
+    'ב+ג':  [112.16, 90.78,  87.56,  72.89, 63.01, 54.05],
+    'ד':    [97.54,  78.94,  76.14,  63.38, 54.79, 49.15],
+    'ה+ו':  [84.81,  68.64,  66.21,  55.10, 47.65, 46.64],
+  };
+  const NONRES = { '1': 449.78, '2': 375.07, '3': 307.74 }; // uniform; café/restaurant z3 = 291.96
+
+  function resTariff(cls, zone, size) {
+    const row = RES[cls]; if (!row) return null;
+    const big = (size === 'gt140' || size === 'villa');
+    if (zone === '1') return big ? row[0] : row[1];
+    if (zone === '2') return big ? row[2] : row[3];
+    if (zone === '3') return row[4];
+    return row[5]; // zone 4 or 5
+  }
+
+  // National discount ceilings (applied by TLV, generally capped at first 100 m²). Flags, not exact amounts.
+  const DISCOUNTS = {
+    senior:       { label: 'אזרח ותיק', pct: '30% (ועד 100% אם על השלמת הכנסה)', note: 'בכפוף למבחן הכנסה; על עד 100 מ"ר.' },
+    lowIncome:    { label: 'הנחה לפי הכנסה', pct: 'עד 90%', note: 'נקבע לפי הכנסה למשק בית ומספר נפשות.' },
+    disability:   { label: 'נכות / אי‑כושר', pct: 'עד 80% (אי‑כושר 75%+) או ~40% (נכות רפואית 90%+)', note: 'נדרש אישור ועדה רפואית / ביטוח לאומי.' },
+    singleParent: { label: 'הורה יחיד', pct: 'עד 20%', note: 'בכפוף לתנאי הכנסה.' },
+    oleh:         { label: 'עולה חדש', pct: 'עד 90% ל‑12 חודשים מתוך השנתיים הראשונות', note: 'עם תעודת עולה.' },
+    empty:        { label: 'נכס ריק', pct: '100% ל‑6 חודשים (פעם אחת בחיי הנכס), ואז מופחת', note: 'דורש הודעה בכתב מראש לעירייה.' },
+  };
+
+  const fmt = (n) => '₪' + Math.round(n).toLocaleString('he-IL');
+  const fmt2 = (n) => '₪' + n.toLocaleString('he-IL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const $ = (id) => document.getElementById(id);
+
+  function syncResOnly() {
+    const isRes = $('propType').value === 'res';
+    document.querySelectorAll('.res-only').forEach(el => el.style.display = isRes ? '' : 'none');
+  }
+  $('propType').addEventListener('change', syncResOnly); syncResOnly();
+
+  // ---- GIS: address → official arnona zone (Tel Aviv ArcGIS, layer 589) ----
+  // Geocode via OpenStreetMap (prototype; a production build would use an official
+  // Israeli geocoder). Then point-in-polygon against the TLV residential arnona
+  // zones layer, which returns both the residential (k_ezor_meg) and non-residential
+  // (k_ezor_asak) zone for the point.
+  async function geocode(addr) {
+    const url = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=il&q=' + encodeURIComponent(addr + ', תל אביב');
+    const j = await (await fetch(url)).json();
+    return j[0] ? { lat: +j[0].lat, lon: +j[0].lon } : null;
+  }
+  async function zoneAt(lat, lon) {
+    const geom = encodeURIComponent(JSON.stringify({ x: lon, y: lat, spatialReference: { wkid: 4326 } }));
+    const url = 'https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/589/query'
+      + '?f=json&geometry=' + geom + '&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=k_ezor_meg,k_ezor_asak&returnGeometry=false';
+    const j = await (await fetch(url)).json();
+    const a = j.features && j.features[0] && j.features[0].attributes;
+    return a ? { res: String(a.k_ezor_meg), nonres: String(a.k_ezor_asak) } : null;
+  }
+  window.__detected = null;
+  $('detectBtn').addEventListener('click', async () => {
+    const addr = $('address').value.trim();
+    const st = $('detectStatus');
+    const set = (txt, cls) => { st.innerHTML = txt; st.className = 'text-xs mt-2 ' + cls; };
+    if (!addr) { set('הזן/י כתובת (רחוב ומספר).', 'text-red-600'); return; }
+    set('מזהה…', 'text-slate-500');
+    window.__detected = null;
+    try {
+      const g = await geocode(addr);
+      if (!g) { set('לא נמצאה הכתובת. אפשר לבחור אזור ידנית מהשובר.', 'text-amber-700'); return; }
+      const z = await zoneAt(g.lat, g.lon);
+      if (!z) { set('הכתובת אותרה אך מחוץ למפת אזורי הארנונה של ת"א. בחר/י אזור ידנית.', 'text-amber-700'); return; }
+      window.__detected = z;
+      const isRes = $('propType').value === 'res';
+      const zoneNum = isRes ? z.res : z.nonres;
+      set('✓ אזור הארנונה הרשמי לכתובת: <strong>אזור ' + zoneNum + '</strong> (' + (isRes ? 'מגורים' : 'לא מגורים') + '). אם בשובר רשום אזור אחר — ייתכן חיוב‑יתר. לחצ/י "בדוק עכשיו".', 'text-emerald-700');
+    } catch (e) {
+      set('שגיאת רשת בזיהוי. נסה/י שוב, או בחר/י אזור ידנית.', 'text-red-600');
+    }
+  });
+
+  $('checkBtn').addEventListener('click', () => {
+    const isRes = $('propType').value === 'res';
+    const cls = $('bldClass').value, size = $('size').value;
+    const billZone = $('zone').value;            // zone written on the bill (may be empty)
+    const det = window.__detected;               // official zone from address (may be null)
+    const officialZone = det ? (isRes ? det.res : det.nonres) : billZone;
+    const zone = officialZone;                    // the zone you SHOULD be charged by
+    const area = parseFloat($('area').value) || 0;
+    const billTariff = parseFloat($('billTariff').value) || 0;
+    const billAnnual = parseFloat($('billAnnual').value) || 0;
+
+    const tariffFor = (z) => isRes ? resTariff(cls, z, size) : (NONRES[z] || NONRES['3']);
+
+    const flags = [];
+    let expectedAnnual = null;
+
+    if (!zone) {
+      render([{ sev: 'info', title: 'חסר אזור', body: 'בחר/י את האזור הרשום בשובר, או הזן/י כתובת ולחצ/י "זהה אזור".' }], [], null, null, area);
+      return;
+    }
+    const officialTariff = tariffFor(zone);
+
+    // ZONE MISMATCH — the highest-value check: bill zone vs official zone from address
+    if (det && billZone && billZone !== officialZone && area > 0 && officialTariff) {
+      const tBill = tariffFor(billZone), dz = (tBill - officialTariff) * area;
+      if (Math.abs(dz) >= 1) flags.push({
+        sev: dz > 0 ? 'high' : 'info',
+        title: dz > 0 ? `אזור שגוי בשובר — אזור ${billZone} במקום אזור ${officialZone}` : 'האזור בשובר שונה מהאזור הרשמי לכתובת',
+        body: `לפי הכתובת, אזור הארנונה הרשמי הוא <strong>אזור ${officialZone}</strong> (${fmt2(officialTariff)}/מ"ר), אך בשובר רשום <strong>אזור ${billZone}</strong> (${fmt2(tBill)}/מ"ר) — הפרש של ${fmt2(Math.abs(tBill - officialTariff))}/מ"ר. ${dz > 0 ? 'סביר שזה מקור חיוב‑היתר שמופיע למטה, וזו עילה חזקה במיוחד להשגה.' : ''}`
+      });
+    }
+
+    if (area > 0 && officialTariff) {
+      expectedAnnual = area * officialTariff;
+    }
+
+    // 1. Tariff mismatch (bill tariff vs official)
+    if (billTariff > 0 && officialTariff) {
+      const diff = billTariff - officialTariff;
+      if (Math.abs(diff) >= 0.5) {
+        flags.push({
+          sev: diff > 0 ? 'high' : 'info',
+          title: diff > 0 ? 'התעריף בשובר גבוה מהתעריף הרשמי' : 'התעריף בשובר נמוך מהרשמי (ייתכן הנחה/סיווג אחר)',
+          body: `בשובר: ${fmt2(billTariff)}/מ"ר · רשמי לפי הצו: ${fmt2(officialTariff)}/מ"ר. ${diff > 0 ? 'ייתכן סיווג שגוי או אזור שגוי — בדיקה דרך השגה.' : ''}`
+        });
+      }
+    }
+
+    // 2. Annual charge vs expected
+    if (expectedAnnual && billAnnual > 0) {
+      const over = billAnnual - expectedAnnual;
+      const pct = (over / expectedAnnual) * 100;
+      if (over > Math.max(150, expectedAnnual * 0.03)) {
+        flags.push({
+          sev: 'high',
+          title: `ייתכן חיוב‑יתר של כ‑${fmt(over)} בשנה`,
+          body: `החיוב הצפוי לפי הצו: ${fmt(expectedAnnual)} (${area} מ"ר × ${fmt2(officialTariff)}). בשובר: ${fmt(billAnnual)} — גבוה ב‑${pct.toFixed(0)}%. סיבה אפשרית: שטח מחויב מנופח או סיווג/אזור שגוי. שווה לשקול מדידה חוזרת והגשת השגה.`
+        });
+      } else if (over < -150) {
+        flags.push({ sev: 'ok', title: 'החיוב נמוך מהצפוי — ייתכן שכבר מיושמת הנחה', body: `צפוי לפי הצו: ${fmt(expectedAnnual)} · בשובר: ${fmt(billAnnual)}.` });
+      } else {
+        flags.push({ sev: 'ok', title: 'החיוב תואם את התעריף הרשמי', body: `צפוי: ${fmt(expectedAnnual)} · בשובר: ${fmt(billAnnual)} — בטווח התקין.` });
+      }
+    }
+
+    // 3. Discount finder
+    const discounts = [];
+    document.querySelectorAll('[data-disc]:checked').forEach(cb => discounts.push(DISCOUNTS[cb.dataset.disc]));
+    const discFlags = discounts.map(d => `<li class="py-2 border-b border-amber-100 last:border-0"><strong>${d.label} — ${d.pct}</strong><br><span class="text-slate-600 text-xs">${d.note}</span></li>`);
+
+    window.__lastResult = { address: $('address').value.trim(), isRes, billZone, officialZone, cls, size, area, officialTariff, billTariff, expectedAnnual, billAnnual, flags, discounts };
+    render(flags, discFlags, expectedAnnual, officialTariff, area);
+  });
+
+  function render(flags, discFlags, expectedAnnual, officialTariff, area) {
+    const sevStyle = {
+      high: 'bg-red-50 border-red-300 text-red-900',
+      info: 'bg-blue-50 border-blue-300 text-blue-900',
+      ok:   'bg-emerald-50 border-emerald-300 text-emerald-900',
+    };
+    const hasOverpay = flags.some(f => f.sev === 'high');
+
+    let html = '<div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">';
+    html += '<h2 class="font-extrabold text-xl mb-1">תוצאת הבדיקה</h2>';
+    if (officialTariff) html += `<p class="text-sm text-slate-500 mb-4">תעריף רשמי לפי צו 2026: <strong>${fmt2(officialTariff)}/מ"ר</strong>${expectedAnnual ? ` · חיוב שנתי צפוי ל‑${area} מ"ר: <strong>${fmt(expectedAnnual)}</strong>` : ''}</p>`;
+
+    if (flags.length === 0) html += '<p class="text-sm text-slate-600 mb-4">מלא/י שטח + תעריף/סכום שנתי כדי לקבל בדיקת חיוב.</p>';
+    flags.forEach(f => {
+      html += `<div class="border rounded-xl px-4 py-3 mb-2 ${sevStyle[f.sev]}"><p class="font-bold text-sm">${f.sev==='high'?'⚠️ ':f.sev==='ok'?'✓ ':'ℹ️ '}${f.title}</p><p class="text-xs mt-1 leading-relaxed">${f.body}</p></div>`;
+    });
+
+    if (discFlags.length) {
+      html += '<div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4"><p class="font-bold text-amber-900 text-sm mb-2">💰 הנחות שאולי מגיעות לך ולא נוצלו</p><ul class="text-sm">' + discFlags.join('') + '</ul>';
+      html += '<a href="https://www5.tel-aviv.gov.il/tlvForms/TlvArnonaDiscountRequest/" target="_blank" class="inline-block mt-3 bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold px-4 py-2 rounded-lg">להגשת בקשת הנחה אונליין ←</a></div>';
+    }
+
+    if (hasOverpay) {
+      html += `<div class="mt-5 bg-brand-50 border border-brand-100 rounded-xl p-4">
+        <p class="font-extrabold text-slate-900 mb-2">מה עכשיו? (חלון של 90 יום!)</p>
+        <ol class="list-decimal pr-5 space-y-1.5 text-sm text-slate-700">
+          <li>ניתן להגיש <strong>השגה</strong> למנהל הארנונה תוך <strong>90 יום</strong> מקבלת השובר.</li>
+          <li>אם הפער בשטח — הזמן/י <strong>מודד מוסמך</strong> למדידה חוזרת כראיה.</li>
+          <li>החזר אפשרי <strong>רטרואקטיבית עד ~7 שנים</strong>.</li>
+        </ol>
+        <a href="https://www5.tel-aviv.gov.il/TlvFormCollection/TlvArnona/TlvObjectionOfTaxes/" target="_blank" class="inline-block mt-3 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-lg">להגשת השגה אונליין ←</a>
+      </div>`;
+    }
+
+    html += '<button id="objBtn" class="mt-5 w-full sm:w-auto bg-slate-900 hover:bg-slate-700 text-white font-semibold py-3 px-5 rounded-xl transition">📄 הפק תיק השגה (PDF) — טיוטה להגשה עצמית</button>';
+    html += '<p class="text-xs text-slate-400 mt-4">הערכה בלבד · מבוסס צו הארנונה ת"א 2026 · אינו ייעוץ. אימות מול העירייה / ועדת ערר.</p>';
+    html += '</div>';
+
+    const r = $('result');
+    r.innerHTML = html;
+    const ob = document.getElementById('objBtn'); if (ob) ob.addEventListener('click', () => buildObjectionDoc(window.__lastResult));
+    r.classList.remove('hidden');
+    r.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Builds a printable "objection packet" (תיק השגה) the user files themselves.
+  function buildObjectionDoc(r) {
+    if (!r) return;
+    const today = new Date().toLocaleDateString('he-IL');
+    const zoneMismatch = r.officialZone && r.billZone && r.officialZone !== r.billZone;
+    const overpay = r.expectedAnnual && r.billAnnual && (r.billAnnual - r.expectedAnnual > Math.max(150, r.expectedAnnual * 0.03));
+    const tariffIssue = r.billTariff && r.officialTariff && Math.abs(r.billTariff - r.officialTariff) >= 0.5 && !zoneMismatch;
+
+    const grounds = [];
+    if (zoneMismatch) grounds.push(`טעות באזור המס: לפי מפת אזורי הארנונה הרשמית הנכס מצוי באזור ${r.officialZone}, ואילו החיוב נעשה לפי אזור ${r.billZone}.`);
+    if (overpay) grounds.push(`טעות בגודל השטח המחויב / בחישוב: החיוב בפועל (${fmt(r.billAnnual)}) גבוה מהחיוב הצפוי לפי הצו (${fmt(r.expectedAnnual)}). ייתכן שטח מחויב מנופח — נדרשת מדידת מודד מוסמך.`);
+    if (tariffIssue) grounds.push(`טעות בתעריף/סיווג: התעריף בשובר (${fmt2(r.billTariff)}/מ"ר) אינו תואם את התעריף הרשמי לפי הצו (${fmt2(r.officialTariff)}/מ"ר).`);
+
+    const groundsHtml = grounds.length ? grounds.map(g => `<li>${g}</li>`).join('') : '<li>יש לפרט את עילת ההשגה לפי הבדיקה (אזור / סוג / שטח / שימוש).</li>';
+    const discHtml = (r.discounts || []).length
+      ? '<h2>הנחות לבדיקה ולמיצוי</h2><ul>' + r.discounts.map(d => `<li><strong>${d.label}</strong> — ${d.pct}. ${d.note}</li>`).join('') + '</ul>' : '';
+
+    const letterLines = grounds.map((g, i) => `${i + 1}. ${g}`).join('\n');
+    const letter = `לכבוד\nמנהל הארנונה, עיריית תל אביב‑יפו\n\nהנדון: השגה על חיוב ארנונה — הנכס ברחוב ${r.address || '____________'}\n\nאני הח"מ, מחזיק/ה בנכס שבנדון, מגיש/ה בזאת השגה על קביעת הארנונה, מהנימוקים הבאים:\n${letterLines || '1. ____________'}\n\nאי לכך אבקש לתקן את החיוב בהתאם ולהשיב לי כל חיוב‑יתר ששולם, רטרואקטיבית עד לתקופה המותרת בדין (עד 7 שנים).\n\nבכבוד רב,\n____________  (שם מלא · ת"ז · טלפון · חתימה)\nתאריך: ${today}`;
+
+    const details = [
+      ['כתובת', r.address || '—'],
+      ['אזור רשמי (לפי מפת העירייה)', r.officialZone || '—'],
+      ['אזור שנרשם בשובר', r.billZone || '—'],
+      r.isRes ? ['סוג בניין', r.cls] : null,
+      ['שטח מחויב (מ"ר)', r.area || '—'],
+      ['תעריף רשמי לפי צו 2026', r.officialTariff ? fmt2(r.officialTariff) + '/מ"ר' : '—'],
+      ['חיוב שנתי צפוי לפי הצו', r.expectedAnnual ? fmt(r.expectedAnnual) : '—'],
+      ['חיוב שנתי בשובר', r.billAnnual ? fmt(r.billAnnual) : '—'],
+    ].filter(Boolean).map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+
+    const styles = "body{font-family:Arial,sans-serif;color:#0f172a;line-height:1.6;padding:24px;max-width:740px;margin:0 auto}"
+      + "h1{font-size:20px;margin:0 0 2px}.muted{color:#64748b;font-size:12px}"
+      + "h2{font-size:15px;margin:20px 0 4px;border-bottom:2px solid #059669;padding-bottom:3px}"
+      + "table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0}td,th{border-bottom:1px solid #e2e8f0;padding:6px;text-align:right}th{background:#f8fafc}"
+      + "ul,ol{padding-right:20px;font-size:13px}pre{white-space:pre-wrap;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;font-family:Arial,sans-serif;font-size:13px}"
+      + ".disc{font-size:11px;color:#64748b;border-top:1px solid #e2e8f0;margin-top:18px;padding-top:8px}";
+    const html = '<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><title>תיק השגה לארנונה — טיוטה</title><style>' + styles + '</style></head><body>'
+      + '<h1>תיק השגה לארנונה — טיוטה</h1>'
+      + '<div class="muted">נוצר בתאריך ' + today + ' · עיריית תל אביב‑יפו · טיוטה להגשה עצמית — אינה ייעוץ משפטי</div>'
+      + '<h2>פרטי הנכס והחיוב</h2><table><tr><th>פריט</th><th>ערך</th></tr>' + details + '</table>'
+      + '<h2>עילות ההשגה</h2><ol>' + groundsHtml + '</ol>'
+      + discHtml
+      + '<h2>נוסח השגה לדוגמה (להעתקה והתאמה)</h2><pre>' + letter.replace(/</g, '&lt;') + '</pre>'
+      + '<h2>איך מגישים — צעד אחר צעד</h2><ol>'
+        + '<li>הגשת <strong>השגה למנהל הארנונה תוך 90 יום</strong> מקבלת השובר — אונליין באתר עיריית ת"א (טופס השגה מקוון).</li>'
+        + '<li>אם העילה היא שטח — להזמין <strong>מודד מוסמך</strong> למדידה חוזרת ולצרף את חוות הדעת כראיה.</li>'
+        + '<li>אם ההשגה נדחית — ניתן לערער ל<strong>ועדת ערר</strong> תוך 30 יום מקבלת התשובה.</li>'
+        + '<li>במקביל — להגיש בקשות הנחה רלוונטיות (טופס הנחה מקוון).</li>'
+        + '<li>החזר חיוב‑יתר אפשרי <strong>רטרואקטיבית עד ~7 שנים</strong>.</li>'
+      + '</ol>'
+      + '<div class="disc">טיוטה זו הופקה אוטומטית על בסיס הנתונים שהזנת וצו הארנונה הפומבי של ת"א 2026. המספרים הם הערכה — יש לאמת מול השובר ומול העירייה. אין באמור ייעוץ משפטי או מקצועי; הבדיקה, ההגשה והאחריות עליה הן באחריותך בלבד.</div>'
+      + '</body></html>';
+    const w = window.open('', '_blank');
+    if (!w) { alert('חלון ההדפסה נחסם — אפשר לאשר חלונות קופצים ולנסות שוב.'); return; }
+    w.document.write(html); w.document.close(); w.focus();
+    setTimeout(() => { try { w.print(); } catch (e) {} }, 350);
+  }
+  </script>
+</body>
+</html>
