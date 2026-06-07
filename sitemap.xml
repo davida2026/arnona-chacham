@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://arnona-chacham.david-b85.workers.dev/</loc>
+    <loc>https://myarnona.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://arnona-chacham.david-b85.workers.dev/madrich/overpaying</loc>
+    <loc>https://myarnona.com/madrich/overpaying</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
