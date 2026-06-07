@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arnona-chacham.david-b85.workers.dev/sitemap.xml
