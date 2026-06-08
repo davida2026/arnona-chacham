@@ -11,6 +11,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://myarnona.com/haifa</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://myarnona.com/madrich/overpaying</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
