@@ -72,13 +72,13 @@
   </nav>
 
   <!-- Hero -->
-  <header class="hero-bg border-b border-slate-100 px-6 pt-14 pb-14">
-    <div class="max-w-2xl mx-auto text-center animate-fade-in-up">
+  <header class="hero-bg border-b border-slate-100 px-6 pt-20 sm:pt-28 pb-16">
+    <div class="max-w-3xl mx-auto text-center animate-fade-in-up">
       <span class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6"><span aria-hidden="true" class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>חינם · בלי הרשמה · 60 שניות · צו ת"א 2026</span>
-      <h1 class="text-4xl sm:text-6xl font-extrabold leading-[1.08] mb-5 tracking-tight">משלמים יותר מדי <span class="gradient-text">ארנונה</span>?</h1>
-      <p class="text-lg sm:text-xl text-slate-600 mb-3 max-w-xl mx-auto leading-relaxed">גלו אם מגיע לכם <strong class="text-slate-900">החזר של אלפי שקלים</strong> — מזהים אזור שגוי, חיוב‑יתר והנחות שלא נוצלו.</p>
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[1.05] mb-6 tracking-tight">משלמים יותר מדי <span class="gradient-text">ארנונה</span>?</h1>
+      <p class="text-lg sm:text-xl text-slate-600 mb-3 max-w-2xl mx-auto leading-relaxed">גלו אם מגיע לכם <strong class="text-slate-900">החזר של אלפי שקלים</strong> — מזהים אזור שגוי, חיוב‑יתר והנחות שלא נוצלו.</p>
       <p class="text-sm text-slate-500 mb-8 max-w-xl mx-auto">לפי צו הארנונה הרשמי של עיריית תל אביב‑יפו · ומפיקים תיק השגה מוכן.</p>
-      <a href="#check" class="cta inline-block bg-brand-700 hover:bg-brand-900 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg shadow-brand-500/25 transition">לבדיקה חינמית ←</a>
+      <a href="#check" class="cta inline-block bg-brand-700 hover:bg-brand-900 text-white font-bold text-lg sm:text-xl px-8 py-5 rounded-xl shadow-lg shadow-brand-500/25 transition">לבדיקה חינמית ←</a>
       <ul class="max-w-xl mx-auto mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-slate-700">
         <li class="inline-flex items-center gap-1.5"><svg aria-hidden="true" class="w-4 h-4 text-brand-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>נתוני עירייה רשמיים</li>
         <li class="inline-flex items-center gap-1.5"><svg aria-hidden="true" class="w-4 h-4 text-brand-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>זיהוי אזור אוטומטי</li>
@@ -131,21 +131,17 @@
     <p class="text-center text-xs text-slate-400 mt-2">דוגמה להמחשה בלבד · הבדיקה שלך מבוססת על הנתונים שתזין/י וצו הארנונה הרשמי.</p>
   </section>
 
-  <!-- As reported / social proof (high on page) -->
-  <section class="max-w-2xl mx-auto px-6 mt-8">
-    <div class="card bg-white rounded-2xl border border-slate-100 p-5">
-      <p class="font-bold text-sm mb-3">למה זה חשוב — כך דווח בתקשורת</p>
-      <div class="space-y-3 text-sm text-slate-600 leading-relaxed">
-        <div class="flex gap-3 items-start">
-          <span class="text-2xl font-extrabold text-brand-600 shrink-0 leading-none mt-0.5">40%</span>
-          <p>מהתלונות על גביית ארנונה <strong>נמצאו מוצדקות</strong> — לפי דוח <strong>מבקר המדינה</strong> (2026). <a href="https://www.ynet.co.il/economy/article/bjsi00qjwwe" target="_blank" rel="noopener" class="text-brand-700 hover:underline whitespace-nowrap">מקור ←</a></p>
-        </div>
-        <div class="flex gap-3 items-start">
-          <span class="text-2xl shrink-0 leading-none mt-0.5">💰</span>
-          <p>עיריות מחזיקות <strong>מיליוני שקלים</strong> בגביית‑יתר ולא מחזירות אותם אוטומטית — לפי <strong>התנועה לחופש המידע</strong> (2022): תל אביב ~130 מ' ₪, ירושלים ~113 מ' ₪, חיפה ~60 מ' ₪, ראשון לציון ~16 מ' ₪. <a href="https://www.meida.org.il/13556" target="_blank" rel="noopener" class="text-brand-700 hover:underline whitespace-nowrap">מקור ←</a></p>
-        </div>
+  <!-- Social proof — its own section (maschacham-style dark callout) -->
+  <section class="px-6 mt-12">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-3">למה זה קורה לרבים מאיתנו?</h2>
+      <p class="text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">העירייה כמעט אף פעם לא מתקנת חיוב‑יתר מיוזמתה. רוב התיקונים וההנחות דורשים פעולה אקטיבית — וכמעט אף אחד לא יודע מה מגיע לו.</p>
+      <div class="bg-slate-900 text-white rounded-3xl p-7 sm:p-9 shadow-xl">
+        <p class="text-2xl sm:text-4xl font-extrabold leading-tight mb-3"><span class="gradient-text">40%</span> מהתלונות על גביית ארנונה<br>נמצאו מוצדקות</p>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">לפי <strong class="text-white">מבקר המדינה</strong> (2026). ולפי <strong class="text-white">התנועה לחופש המידע</strong> (2022), עיריות מחזיקות <strong class="text-white">מיליוני שקלים</strong> בגביית‑יתר שלא הוחזרו אוטומטית — תל אביב ~130 מ' ₪, ירושלים ~113 מ' ₪, חיפה ~60 מ' ₪, ראשון לציון ~16 מ' ₪.</p>
+        <p class="text-xs text-slate-400 mt-5">מקורות: <a href="https://www.ynet.co.il/economy/article/bjsi00qjwwe" target="_blank" rel="noopener" class="underline hover:text-white">מבקר המדינה</a> · <a href="https://www.meida.org.il/13556" target="_blank" rel="noopener" class="underline hover:text-white">התנועה לחופש המידע</a></p>
+        <p class="text-[11px] text-slate-500 mt-2">מובא לצורך מידע בלבד · ארנונה חכמה אינו קשור לגופים אלה ואינו פועל מטעמם.</p>
       </div>
-      <p class="text-[11px] text-slate-400 mt-3">הנתונים מובאים מהמקורות לעיל לצורך מידע בלבד. ארנונה חכמה אינו קשור לגופים אלה ואינו פועל מטעמם.</p>
     </div>
   </section>
 
