@@ -38,7 +38,7 @@
     body{font-family:system-ui,'Segoe UI',Arial,sans-serif}
     input,select{transition:border-color .15s,box-shadow .15s}
     input:focus,select:focus{outline:none;border-color:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.18)}
-    .hero-bg{background:radial-gradient(ellipse at top right,rgba(16,185,129,.10),transparent 55%),radial-gradient(ellipse at bottom left,rgba(59,130,246,.05),transparent 52%)}
+    .hero-bg{background:linear-gradient(180deg,rgba(16,185,129,.07),rgba(255,255,255,0) 62%),radial-gradient(ellipse at top right,rgba(16,185,129,.11),transparent 55%),radial-gradient(ellipse at bottom left,rgba(59,130,246,.05),transparent 52%)}
     .gradient-text{background:linear-gradient(135deg,#059669,#10b981 50%,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     @keyframes fadeInUp{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     .animate-fade-in-up{animation:fadeInUp .7s ease-out both}
@@ -63,10 +63,10 @@
     </div>
   </nav>
 
-  <header class="hero-bg px-6 pt-14 pb-12">
+  <header class="hero-bg border-b border-slate-100 px-6 pt-14 pb-14">
     <div class="max-w-2xl mx-auto text-center animate-fade-in-up">
       <span class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6"><span aria-hidden="true" class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>ירושלים · חינם · בלי הרשמה · צו ארנונה 2026</span>
-      <h1 class="text-4xl sm:text-6xl font-extrabold leading-[1.05] mb-5 tracking-tight">משלמים יותר מדי ארנונה בירושלים?<br><span class="gradient-text">בדקו בחינם</span></h1>
+      <h1 class="text-3xl sm:text-5xl font-extrabold leading-[1.1] mb-5 tracking-tight">משלמים יותר מדי <span class="gradient-text">ארנונה</span> בירושלים?</h1>
       <p class="text-lg sm:text-xl text-slate-600 mb-8 max-w-xl mx-auto leading-relaxed">בדקו לפי צו הארנונה הרשמי של עיריית ירושלים 2026 — מזהים חיוב‑יתר, סיווג שגוי והנחות שלא נוצלו, ומפיקים תיק השגה מוכן.</p>
       <a href="#check" class="cta inline-block bg-brand-700 hover:bg-brand-900 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg shadow-brand-500/25 transition">לבדיקה חינמית ←</a>
     </div>
