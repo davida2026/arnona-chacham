@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>בדיקת ארנונה ירושלים — האם אתם משלמים יותר מדי? (חינם) | ארנונה חכמה</title>
+  <meta name="description" content="בדיקת ארנונה חינמית לירושלים לפי צו הארנונה 2026 — מזהים חיוב‑יתר, אזור/סיווג שגוי והנחות שלא נוצלו, ומפיקים תיק השגה מוכן. בלי הרשמה.">
+  <link rel="canonical" href="https://myarnona.com/jerusalem">
+  <meta property="og:title" content="בדיקת ארנונה ירושלים — משלמים יותר מדי?">
+  <meta property="og:description" content="בדיקת ארנונה חינמית לירושלים לפי צו 2026. חיוב‑יתר, סיווג והנחות.">
+  <meta property="og:url" content="https://myarnona.com/jerusalem">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: {50:'#ecfdf5',100:'#d1fae5',500:'#10b981',600:'#059669',700:'#047857',900:'#064e3b'} },
+      keyframes: { floatUp: { '0%':{opacity:0,transform:'translateY(8px)'},'100%':{opacity:1,transform:'translateY(0)'} } },
+      animation: { floatUp: 'floatUp .5s ease-out both' } } } };
+  </script>
+  <style>
+    body{font-family:system-ui,'Segoe UI',Arial,sans-serif}
+    input,select{transition:border-color .15s,box-shadow .15s}
+    input:focus,select:focus{outline:none;border-color:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.18)}
+    .hero-deco{background-image:radial-gradient(circle at 15% 15%,rgba(255,255,255,.10),transparent 38%),radial-gradient(circle at 85% 0%,rgba(255,255,255,.07),transparent 34%)}
+    .lift{transition:transform .15s}.lift:hover{transform:translateY(-2px)}
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+  <nav class="bg-white/90 backdrop-blur border-b border-slate-100 px-6 py-3 sticky top-0 z-30">
+    <div class="max-w-3xl mx-auto flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <div aria-hidden="true" class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-extrabold shadow-sm shadow-brand-500/30">א</div>
+        <span class="font-extrabold text-slate-900 text-lg">ארנונה חכמה</span>
+      </a>
+      <a href="/" class="text-sm font-semibold text-brand-700 hover:underline">תל אביב ←</a>
+    </div>
+  </nav>
+
+  <header class="hero-deco bg-gradient-to-br from-brand-600 to-brand-900 text-white px-6 pt-12 pb-16">
+    <div class="max-w-2xl mx-auto text-center animate-floatUp">
+      <span class="inline-flex items-center gap-2 bg-white/15 text-xs font-medium px-3 py-1.5 rounded-full mb-5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>ירושלים · חינם · בלי הרשמה · צו ארנונה 2026</span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 leading-[1.1]">משלמים יותר מדי<br>ארנונה בירושלים?</h1>
+      <p class="text-brand-100 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-7">בדקו בחינם לפי צו הארנונה הרשמי של עיריית ירושלים 2026 — מזהים חיוב‑יתר, סיווג שגוי והנחות שלא נוצלו, ומפיקים תיק השגה מוכן.</p>
+      <a href="#check" class="inline-block bg-white text-brand-700 hover:bg-brand-50 font-extrabold text-lg px-8 py-4 rounded-2xl shadow-xl shadow-black/10 lift">לבדיקה חינמית ←</a>
+    </div>
+  </header>
+
+  <main class="max-w-2xl mx-auto px-6 pt-10 pb-8">
+    <div id="check" class="bg-white rounded-3xl shadow-lg shadow-slate-200/60 border border-slate-100 p-6 sm:p-8 mb-6 scroll-mt-20">
+      <h2 class="font-extrabold text-xl mb-1">בדיקת חשבון הארנונה — ירושלים</h2>
+      <p class="text-xs text-slate-500 mb-5">מלא/י את הפרטים מהשובר. 🔒 הכל נשאר בדפדפן שלך — לא נשמר ולא נשלח לשרת.</p>
+
+      <div class="bg-brand-50 border border-brand-100 rounded-2xl p-4 mb-5 text-xs text-slate-600 leading-relaxed">
+        💡 בירושלים האזור (א'/ב'/ג') ותת‑הסיווג (1–4) מופיעים על שובר הארנונה. אין מפת אזורים פתוחה כמו בת"א, אז יש להזין אותם מהשובר.
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1">אזור (מהשובר)</label>
+          <select id="zone" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+            <option value="">— בחר/י</option>
+            <option value="א">אזור א'</option>
+            <option value="ב">אזור ב'</option>
+            <option value="ג">אזור ג'</option>
+            <option value="new">דירה חדשה (נבנתה/אוכלסה מ‑2020)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">תת‑סיווג בניין (מהשובר)</label>
+          <select id="btype" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+            <option value="1">סוג 1</option>
+            <option value="2">סוג 2</option>
+            <option value="3" selected>סוג 3</option>
+            <option value="4">סוג 4</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">שטח מחויב (מ"ר)</label>
+          <input id="area" type="number" min="1" step="1" placeholder="לדוגמה: 90" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">תעריף בשובר (₪ למ"ר)</label>
+          <input id="billTariff" type="number" min="0" step="0.01" placeholder="אופציונלי" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium mb-1">סכום הארנונה השנתי בשובר (₪)</label>
+          <input id="billAnnual" type="number" min="0" step="1" placeholder="לדוגמה: 6800" class="w-full border border-slate-300 rounded-lg px-3 py-2">
+        </div>
+      </div>
+
+      <div class="mt-6 border-t border-slate-100 pt-5">
+        <p class="text-sm font-semibold mb-3">האם משהו מאלה מתאר אותך? <span class="font-normal text-slate-500">(הנחות)</span></p>
+        <div class="grid sm:grid-cols-2 gap-2 text-sm">
+          <label class="flex items-center gap-2 border border-slate-200 rounded-xl px-3 py-2.5 cursor-pointer hover:border-brand-400 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50 transition"><input type="checkbox" data-disc="senior" class="accent-brand-600 w-4 h-4"> אזרח/ית ותיק/ה</label>
+          <label class="flex items-center gap-2 border border-slate-200 rounded-xl px-3 py-2.5 cursor-pointer hover:border-brand-400 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50 transition"><input type="checkbox" data-disc="lowIncome" class="accent-brand-600 w-4 h-4"> הכנסה נמוכה / השלמת הכנסה</label>
+          <label class="flex items-center gap-2 border border-slate-200 rounded-xl px-3 py-2.5 cursor-pointer hover:border-brand-400 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50 transition"><input type="checkbox" data-disc="disability" class="accent-brand-600 w-4 h-4"> נכות 90%+ / אי‑כושר</label>
+          <label class="flex items-center gap-2 border border-slate-200 rounded-xl px-3 py-2.5 cursor-pointer hover:border-brand-400 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50 transition"><input type="checkbox" data-disc="singleParent" class="accent-brand-600 w-4 h-4"> הורה יחיד</label>
+          <label class="flex items-center gap-2 border border-slate-200 rounded-xl px-3 py-2.5 cursor-pointer hover:border-brand-400 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50 transition"><input type="checkbox" data-disc="oleh" class="accent-brand-600 w-4 h-4"> עולה חדש (עד שנתיים)</label>
+          <label class="flex items-center gap-2 border border-slate-200 rounded-xl px-3 py-2.5 cursor-pointer hover:border-brand-400 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50 transition"><input type="checkbox" data-disc="empty" class="accent-brand-600 w-4 h-4"> הנכס ריק / לא מאוכלס</label>
+        </div>
+      </div>
+
+      <button id="checkBtn" class="mt-6 w-full bg-gradient-to-l from-brand-600 to-brand-700 hover:from-brand-700 hover:to-brand-900 text-white font-extrabold text-lg py-4 rounded-2xl shadow-lg shadow-brand-500/25 transition">בדוק עכשיו — חינם ←</button>
+      <p class="text-center text-xs text-slate-400 mt-2">ללא עלות · ללא הרשמה · תוצאה מיידית</p>
+    </div>
+
+    <div id="result" class="hidden"></div>
+
+    <p class="text-xs text-slate-400 leading-relaxed mt-6">💡 התעריפים לפי צו הארנונה של עיריית ירושלים 2026. פער בשטח עשוי לדרוש מדידת מודד מוסמך. הערכה בלבד — הסכום הסופי נקבע ע"י העירייה / ועדת ערר.</p>
+
+    <div class="mt-8 bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+      <p class="font-bold text-sm mb-3">מדריכים שימושיים</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/madrich/overpaying" class="text-brand-700 hover:underline">› האם אתה משלם יותר מדי ארנונה? 5 טעויות נפוצות</a></li>
+        <li><a href="/madrich/objection" class="text-brand-700 hover:underline">› איך מגישים השגת ארנונה — צעד אחר צעד (90 יום)</a></li>
+        <li><a href="/" class="text-brand-700 hover:underline">› בדיקת ארנונה בתל אביב (עם זיהוי אזור אוטומטי)</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 px-6 py-10 mt-10">
+    <div class="max-w-2xl mx-auto text-center text-xs leading-relaxed">
+      <div class="flex items-center justify-center gap-2 mb-3">
+        <div aria-hidden="true" class="w-8 h-8 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold">א</div>
+        <span class="font-extrabold text-slate-200 text-base">ארנונה חכמה</span>
+      </div>
+      <p class="mb-3"><a href="/terms" class="underline hover:text-white">תקנון</a> · <a href="/privacy" class="underline hover:text-white">מדיניות פרטיות</a> · <a href="/accessibility" class="underline hover:text-white">הצהרת נגישות</a></p>
+      <p class="mb-2 text-slate-500">בדיקת ארנונה חינמית · ירושלים · מבוסס צו הארנונה 2026 של עיריית ירושלים.</p>
+      <p class="text-slate-500">🧪 גרסת BETA — שירות מידע בלבד, אינו ייעוץ משפטי. הסכום הסופי וההחזר נקבעים ע"י העירייה / ועדת ערר.</p>
+    </div>
+  </footer>
+
+  <script>
+  // ---- Jerusalem 2026 official residential tariffs (₪/m²/yr) — צו הארנונה ירושלים 2026 ----
+  // rows = zone, columns = building sub-type [1,2,3,4]
+  const JER = {
+    'א': [129.91, 107.65, 75.70, 46.35],
+    'ב': [118.04, 86.34,  56.28, 46.35],
+    'ג': [91.07,  64.23,  46.35, 46.35],
+  };
+  // New residential built/occupied from 1.1.2020 → top rates regardless of zone
+  const JER_NEW = [129.91, 107.65, 75.70, 46.35];
+
+  function jerTariff(zone, type) {
+    const t = parseInt(type) - 1;
+    if (zone === 'new') return JER_NEW[t];
+    const row = JER[zone];
+    return row ? row[t] : null;
+  }
+
+  const DISCOUNTS = {
+    senior:       { label: 'אזרח ותיק', pct: '30% (ועד 100% עם השלמת הכנסה)', note: 'בכפוף למבחן הכנסה; על עד 100 מ"ר.' },
+    lowIncome:    { label: 'הנחה לפי הכנסה', pct: 'עד 90%', note: 'לפי הכנסה ומספר נפשות.' },
+    disability:   { label: 'נכות', pct: '40% (נכות רפואית 90%+)', note: 'נדרש אישור.' },
+    singleParent: { label: 'הורה יחיד', pct: '20%', note: 'בכפוף לתנאים.' },
+    oleh:         { label: 'עולה חדש', pct: 'עד 90% (תקופה מוגבלת)', note: 'עם תעודת עולה.' },
+    empty:        { label: 'נכס ריק', pct: 'פטור לתקופה מוגבלת', note: 'דורש הודעה מראש לעירייה.' },
+  };
+
+  const fmt  = (n) => '₪' + Math.round(n).toLocaleString('he-IL');
+  const fmt2 = (n) => '₪' + n.toLocaleString('he-IL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const $ = (id) => document.getElementById(id);
+
+  $('checkBtn').addEventListener('click', () => {
+    const zone = $('zone').value;
+    const type = $('btype').value;
+    const area = parseFloat($('area').value) || 0;
+    const billTariff = parseFloat($('billTariff').value) || 0;
+    const billAnnual = parseFloat($('billAnnual').value) || 0;
+    const flags = [];
+
+    if (!zone) { render([{ sev:'info', title:'חסר אזור', body:'בחר/י את האזור הרשום בשובר (א\'/ב\'/ג\').' }], [], null, null, area); return; }
+    const officialTariff = jerTariff(zone, type);
+    let expectedAnnual = (area > 0 && officialTariff) ? area * officialTariff : null;
+
+    if (billTariff > 0 && officialTariff && Math.abs(billTariff - officialTariff) >= 0.5) {
+      const diff = billTariff - officialTariff;
+      flags.push({ sev: diff > 0 ? 'high' : 'info',
+        title: diff > 0 ? 'התעריף בשובר גבוה מהתעריף הרשמי' : 'התעריף בשובר שונה מהרשמי',
+        body: `בשובר: ${fmt2(billTariff)}/מ"ר · רשמי לפי הצו: ${fmt2(officialTariff)}/מ"ר. ${diff > 0 ? 'ייתכן סיווג/אזור שגוי — שווה לבדוק דרך השגה.' : ''}` });
+    }
+    if (expectedAnnual && billAnnual > 0) {
+      const over = billAnnual - expectedAnnual, pct = over / expectedAnnual * 100;
+      if (over > Math.max(150, expectedAnnual * 0.03))
+        flags.push({ sev:'high', title:`ייתכן חיוב‑יתר של כ‑${fmt(over)} בשנה`,
+          body:`החיוב הצפוי לפי הצו: ${fmt(expectedAnnual)} (${area} מ"ר × ${fmt2(officialTariff)}). בשובר: ${fmt(billAnnual)} — גבוה ב‑${pct.toFixed(0)}%. סיבה אפשרית: שטח מנופח או סיווג/אזור שגוי.` });
+      else if (over < -150)
+        flags.push({ sev:'ok', title:'החיוב נמוך מהצפוי — ייתכן שכבר מיושמת הנחה', body:`צפוי: ${fmt(expectedAnnual)} · בשובר: ${fmt(billAnnual)}.` });
+      else
+        flags.push({ sev:'ok', title:'החיוב תואם את התעריף הרשמי', body:`צפוי: ${fmt(expectedAnnual)} · בשובר: ${fmt(billAnnual)} — בטווח התקין.` });
+    }
+
+    const discounts = [];
+    document.querySelectorAll('[data-disc]:checked').forEach(cb => discounts.push(DISCOUNTS[cb.dataset.disc]));
+    const discFlags = discounts.map(d => `<li class="py-2 border-b border-amber-100 last:border-0"><strong>${d.label} — ${d.pct}</strong><br><span class="text-slate-600 text-xs">${d.note}</span></li>`);
+
+    window.__lastResult = { zone, type, area, officialTariff, billTariff, expectedAnnual, billAnnual, flags, discounts };
+    render(flags, discFlags, expectedAnnual, officialTariff, area);
+  });
+
+  function render(flags, discFlags, expectedAnnual, officialTariff, area) {
+    const sev = { high:'bg-red-50 border-red-300 text-red-900', info:'bg-blue-50 border-blue-300 text-blue-900', ok:'bg-emerald-50 border-emerald-300 text-emerald-900' };
+    const hasOver = flags.some(f => f.sev === 'high');
+    let h = '<div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-6">';
+    h += '<h2 class="font-extrabold text-xl mb-1">תוצאת הבדיקה</h2>';
+    if (officialTariff) h += `<p class="text-sm text-slate-500 mb-4">תעריף רשמי לפי צו ירושלים 2026: <strong>${fmt2(officialTariff)}/מ"ר</strong>${expectedAnnual ? ` · חיוב שנתי צפוי ל‑${area} מ"ר: <strong>${fmt(expectedAnnual)}</strong>` : ''}</p>`;
+    flags.forEach(f => h += `<div class="border rounded-xl px-4 py-3 mb-2 ${sev[f.sev]}"><p class="font-bold text-sm">${f.sev==='high'?'⚠️ ':f.sev==='ok'?'✓ ':'ℹ️ '}${f.title}</p><p class="text-xs mt-1 leading-relaxed">${f.body}</p></div>`);
+    if (discFlags.length) {
+      h += '<div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4"><p class="font-bold text-amber-900 text-sm mb-2">💰 הנחות שאולי מגיעות לך ולא נוצלו</p><ul class="text-sm">' + discFlags.join('') + '</ul>';
+      h += '<a href="https://www.jerusalem.muni.il/he/residents/arnona/arnonadiscounts/" target="_blank" rel="noopener" class="inline-block mt-3 bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold px-4 py-2 rounded-lg">להגשת בקשת הנחה ←</a></div>';
+    }
+    if (hasOver) {
+      h += `<div class="mt-5 bg-brand-50 border border-brand-100 rounded-xl p-4"><p class="font-extrabold mb-2">מה עכשיו? (חלון של 90 יום!)</p>
+        <ol class="list-decimal pr-5 space-y-1.5 text-sm text-slate-700">
+          <li>ניתן להגיש <strong>השגה</strong> למנהל הארנונה תוך <strong>90 יום</strong> מקבלת השובר.</li>
+          <li>אם הפער בשטח — הזמן/י <strong>מודד מוסמך</strong> כראיה.</li>
+          <li>החזר אפשרי <strong>רטרואקטיבית עד ~7 שנים</strong>.</li>
+        </ol>
+        <div class="flex flex-wrap gap-2 mt-3">
+          <button id="objBtn" class="bg-slate-900 hover:bg-slate-700 text-white text-sm font-semibold px-4 py-2 rounded-lg">📄 הפק תיק השגה</button>
+          <a href="https://www.jerusalem.muni.il/he/residents/arnona/objections/" target="_blank" rel="noopener" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-lg">להגשת השגה (עיריית י-ם) ←</a>
+        </div></div>`;
+    }
+    h += '<p class="text-xs text-slate-400 mt-4">הערכה בלבד · מבוסס צו הארנונה ירושלים 2026 · אינו ייעוץ. אימות מול העירייה / ועדת ערר.</p></div>';
+    const r = $('result'); r.innerHTML = h;
+    const ob = document.getElementById('objBtn'); if (ob) ob.addEventListener('click', () => buildObjectionDoc(window.__lastResult));
+    r.classList.remove('hidden'); r.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  function buildObjectionDoc(r) {
+    if (!r) return;
+    const today = new Date().toLocaleDateString('he-IL');
+    const overpay = r.expectedAnnual && r.billAnnual && (r.billAnnual - r.expectedAnnual > Math.max(150, r.expectedAnnual*0.03));
+    const tariffIssue = r.billTariff && r.officialTariff && Math.abs(r.billTariff - r.officialTariff) >= 0.5;
+    const grounds = [];
+    if (overpay) grounds.push(`טעות בגודל השטח המחויב / בחישוב: החיוב בפועל (${fmt(r.billAnnual)}) גבוה מהחיוב הצפוי לפי הצו (${fmt(r.expectedAnnual)}). ייתכן שטח מנופח — נדרשת מדידת מודד מוסמך.`);
+    if (tariffIssue) grounds.push(`טעות בתעריף/סיווג: התעריף בשובר (${fmt2(r.billTariff)}/מ"ר) אינו תואם את התעריף הרשמי לפי הצו (${fmt2(r.officialTariff)}/מ"ר) לאזור ${r.zone==='new'?'דירה חדשה':r.zone} סוג ${r.type}.`);
+    const groundsHtml = grounds.length ? grounds.map(g=>`<li>${g}</li>`).join('') : '<li>יש לפרט את עילת ההשגה (אזור / סוג / שטח / שימוש).</li>';
+    const discHtml = (r.discounts||[]).length ? '<h2>הנחות לבדיקה</h2><ul>'+r.discounts.map(d=>`<li><strong>${d.label}</strong> — ${d.pct}. ${d.note}</li>`).join('')+'</ul>' : '';
+    const letter = `לכבוד\nמנהל הארנונה, עיריית ירושלים\n\nהנדון: השגה על חיוב ארנונה\n\nאני הח"מ, מחזיק/ה בנכס שבנדון, מגיש/ה בזאת השגה על קביעת הארנונה, מהנימוקים הבאים:\n${grounds.map((g,i)=>`${i+1}. ${g}`).join('\n') || '1. ____________'}\n\nאבקש לתקן את החיוב ולהשיב כל חיוב‑יתר, רטרואקטיבית עד לתקופה המותרת בדין.\n\nבכבוד רב,\n____________ (שם · ת"ז · טלפון · חתימה)\nתאריך: ${today}`;
+    const details = [
+      ['אזור', r.zone==='new'?'דירה חדשה (מ‑2020)':("אזור "+r.zone)],
+      ['תת‑סיווג', 'סוג '+r.type],
+      ['שטח מחויב (מ"ר)', r.area||'—'],
+      ['תעריף רשמי לפי צו 2026', r.officialTariff?fmt2(r.officialTariff)+'/מ"ר':'—'],
+      ['חיוב שנתי צפוי', r.expectedAnnual?fmt(r.expectedAnnual):'—'],
+      ['חיוב שנתי בשובר', r.billAnnual?fmt(r.billAnnual):'—'],
+    ].map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+    const styles = "body{font-family:Arial,sans-serif;color:#0f172a;line-height:1.6;padding:24px;max-width:740px;margin:0 auto}h1{font-size:20px;margin:0 0 2px}.muted{color:#64748b;font-size:12px}h2{font-size:15px;margin:20px 0 4px;border-bottom:2px solid #059669;padding-bottom:3px}table{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0}td,th{border-bottom:1px solid #e2e8f0;padding:6px;text-align:right}th{background:#f8fafc}ol,ul{padding-right:20px;font-size:13px}pre{white-space:pre-wrap;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;font-family:Arial,sans-serif;font-size:13px}.disc{font-size:11px;color:#64748b;border-top:1px solid #e2e8f0;margin-top:18px;padding-top:8px}";
+    const html = '<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><title>תיק השגה לארנונה — ירושלים</title><style>'+styles+'</style></head><body>'
+      + '<h1>תיק השגה לארנונה — ירושלים (טיוטה)</h1>'
+      + '<div class="muted">נוצר בתאריך '+today+' · עיריית ירושלים · טיוטה להגשה עצמית — אינה ייעוץ משפטי</div>'
+      + '<h2>פרטי הנכס והחיוב</h2><table><tr><th>פריט</th><th>ערך</th></tr>'+details+'</table>'
+      + '<h2>עילות ההשגה</h2><ol>'+groundsHtml+'</ol>'+discHtml
+      + '<h2>נוסח השגה לדוגמה</h2><pre>'+letter.replace(/</g,'&lt;')+'</pre>'
+      + '<h2>איך מגישים</h2><ol><li>השגה למנהל הארנונה תוך <strong>90 יום</strong> מקבלת השובר (אתר עיריית ירושלים).</li><li>אם העילה שטח — חוות דעת מודד מוסמך.</li><li>נדחתה? ערר לוועדת ערר תוך 30 יום.</li><li>החזר עד ~7 שנים אחורה.</li></ol>'
+      + '<div class="disc">טיוטה אוטומטית על בסיס הנתונים שהזנת וצו הארנונה הפומבי של ירושלים 2026. המספרים הם הערכה — אמת/י מול השובר והעירייה. אין באמור ייעוץ משפטי.</div></body></html>';
+    const w = window.open('', '_blank');
+    if (!w) { alert('חלון ההדפסה נחסם — אפשר לאשר חלונות קופצים.'); return; }
+    w.document.write(html); w.document.close(); w.focus(); setTimeout(()=>{ try{w.print();}catch(e){} }, 350);
+  }
+  </script>
+</body>
+</html>
