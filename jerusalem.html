@@ -263,6 +263,7 @@
     h += '<p class="text-xs text-slate-400 mt-4">הערכה בלבד · מבוסס צו הארנונה ירושלים 2026 · אינו ייעוץ. אימות מול העירייה / ועדת ערר.</p></div>';
     const r = $('result'); r.innerHTML = h;
     const ob = document.getElementById('objBtn'); if (ob) ob.addEventListener('click', () => buildObjectionDoc(window.__lastResult));
+    r.querySelectorAll('a[target="_blank"]').forEach(a => { a.addEventListener('click', function (e) { e.preventDefault(); let w=null; try { w=window.open(this.href,'_blank'); } catch(_){} if (w) { try { w.opener=null; } catch(_){} } else { window.location.href=this.href; } }); });
     r.classList.remove('hidden'); r.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 

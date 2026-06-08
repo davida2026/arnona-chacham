@@ -480,6 +480,18 @@
     const r = $('result');
     r.innerHTML = html;
     const ob = document.getElementById('objBtn'); if (ob) ob.addEventListener('click', () => buildObjectionDoc(window.__lastResult));
+    // External municipal links: open in a new tab, but FALL BACK to same-tab when a new tab
+    // can't open (in-app browsers like WhatsApp/Instagram, or a popup blocker) so the button always responds.
+    r.querySelectorAll('a[target="_blank"]').forEach(a => {
+      a.rel = 'noopener noreferrer';
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        let w = null;
+        try { w = window.open(this.href, '_blank'); } catch (_) {}
+        if (w) { try { w.opener = null; } catch (_) {} }
+        else { window.location.href = this.href; }  // in-app webview / blocked → same tab
+      });
+    });
     r.classList.remove('hidden');
     r.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
