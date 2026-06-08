@@ -34,29 +34,23 @@
       animation: { floatUp: 'floatUp .5s ease-out both' } } } };
   </script>
   <style>
-    body{font-family:system-ui,'Segoe UI',Arial,sans-serif;background:#f5f7f9;
-      background-image:radial-gradient(circle at 12% -8%,rgba(16,185,129,.07),transparent 42%),radial-gradient(circle at 92% 2%,rgba(5,150,105,.05),transparent 38%);
-      background-attachment:fixed;background-repeat:no-repeat}
+    body{font-family:system-ui,'Segoe UI',Arial,sans-serif}
     input,select{transition:border-color .15s,box-shadow .15s}
     input:focus,select:focus{outline:none;border-color:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.18)}
-    .hero-deco{position:relative;overflow:hidden}
-    .hero-deco::before{content:"";position:absolute;inset:0;pointer-events:none;
-      background-image:radial-gradient(circle at 16% 18%,rgba(255,255,255,.16),transparent 40%),radial-gradient(circle at 86% 6%,rgba(52,211,153,.22),transparent 44%)}
-    .hero-deco::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;
-      background-image:radial-gradient(rgba(255,255,255,.10) 1px,transparent 1px);background-size:22px 22px;
-      -webkit-mask-image:linear-gradient(to bottom,#000,transparent 78%);mask-image:linear-gradient(to bottom,#000,transparent 78%)}
-    .hero-deco>*{position:relative;z-index:1}
-    .card{box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16)}
+    .hero-bg{background:radial-gradient(ellipse at top right,rgba(16,185,129,.10),transparent 55%),radial-gradient(ellipse at bottom left,rgba(59,130,246,.05),transparent 52%)}
+    .gradient-text{background:linear-gradient(135deg,#059669,#10b981 50%,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    @keyframes fadeInUp{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .animate-fade-in-up{animation:fadeInUp .7s ease-out both}
+    .card{box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.14)}
     .lift{transition:transform .18s ease,box-shadow .18s ease}
-    .lift:hover{transform:translateY(-3px);box-shadow:0 14px 34px -14px rgba(16,24,40,.24)}
-    .mark{background:linear-gradient(transparent 58%,rgba(251,191,36,.5) 0);padding:0 .1em;border-radius:2px}
+    .lift:hover{transform:translateY(-3px);box-shadow:0 14px 34px -14px rgba(16,24,40,.22)}
     .cta{position:relative;overflow:hidden}
     .cta::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
-      background:linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);transition:left .6s ease}
+      background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .6s ease}
     .cta:hover::after{left:130%}
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
+<body class="bg-white text-slate-900 antialiased">
 
   <nav class="bg-white/90 backdrop-blur border-b border-slate-100 px-6 py-3 sticky top-0 z-30">
     <div class="max-w-3xl mx-auto flex items-center justify-between">
@@ -68,12 +62,12 @@
     </div>
   </nav>
 
-  <header class="hero-deco bg-gradient-to-br from-brand-600 to-brand-900 text-white px-6 pt-12 pb-16">
-    <div class="max-w-2xl mx-auto text-center animate-floatUp">
-      <span class="inline-flex items-center gap-2 bg-white/15 text-xs font-medium px-3 py-1.5 rounded-full mb-5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-300"></span>חיפה · חינם · בלי הרשמה · צו ארנונה 2026</span>
-      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 leading-[1.1]">משלמים יותר מדי<br>ארנונה בחיפה?</h1>
-      <p class="text-brand-100 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-7">בדקו בחינם לפי צו הארנונה של עיריית חיפה 2026 — משווים את התעריף שבשובר לתעריף הרשמי, מסמנים חיוב‑יתר והנחות שלא נוצלו, ומפיקים תיק השגה מוכן.</p>
-      <a href="#check" class="cta lift inline-block bg-white text-brand-700 hover:bg-brand-50 font-extrabold text-lg px-8 py-4 rounded-2xl shadow-xl shadow-black/20 ring-1 ring-black/5">לבדיקה חינמית ←</a>
+  <header class="hero-bg px-6 pt-14 pb-12">
+    <div class="max-w-2xl mx-auto text-center animate-fade-in-up">
+      <span class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6"><span aria-hidden="true" class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>חיפה · חינם · בלי הרשמה · צו ארנונה 2026</span>
+      <h1 class="text-4xl sm:text-6xl font-extrabold leading-[1.05] mb-5 tracking-tight">משלמים יותר מדי ארנונה בחיפה?<br><span class="gradient-text">בדקו בחינם</span></h1>
+      <p class="text-lg sm:text-xl text-slate-600 mb-8 max-w-xl mx-auto leading-relaxed">בדקו לפי צו הארנונה של עיריית חיפה 2026 — משווים את התעריף שבשובר לתעריף הרשמי, מסמנים חיוב‑יתר והנחות שלא נוצלו, ומפיקים תיק השגה מוכן.</p>
+      <a href="#check" class="cta inline-block bg-brand-700 hover:bg-brand-900 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg shadow-brand-500/25 transition">לבדיקה חינמית ←</a>
     </div>
   </header>
 
@@ -145,7 +139,7 @@
     <div id="result" class="hidden"></div>
 
     <!-- As reported -->
-    <div class="mt-6 bg-amber-50 border border-amber-200 rounded-2xl p-4 text-sm text-slate-700 leading-relaxed">
+    <div class="mt-6 card bg-brand-50 border border-brand-100 rounded-2xl p-4 text-sm text-slate-700 leading-relaxed">
       📊 לפי <strong>התנועה לחופש המידע</strong> (2022), עיריית חיפה נמצאה מחזיקה <strong>כ‑60 מיליון ₪</strong> בגביית‑יתר ארנונה שלא הוחזרו לתושבים אוטומטית. ולפי <strong>מבקר המדינה</strong> (2026), כ‑<strong>40%</strong> מהתלונות על גביית ארנונה נמצאו מוצדקות. <a href="https://www.meida.org.il/13556" target="_blank" rel="noopener" class="text-brand-700 hover:underline whitespace-nowrap">מקור ←</a>
       <span class="block text-[11px] text-slate-400 mt-2">מובא מהמקורות לצורך מידע בלבד. ארנונה חכמה אינו קשור לגופים אלה ואינו פועל מטעמם.</span>
     </div>

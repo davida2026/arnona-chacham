@@ -37,33 +37,24 @@
       animation: { floatUp: 'floatUp .5s ease-out both' } } } };
   </script>
   <style>
-    body{font-family:system-ui,'Segoe UI',Arial,sans-serif;background:#f5f7f9;
-      background-image:radial-gradient(circle at 12% -8%,rgba(16,185,129,.07),transparent 42%),radial-gradient(circle at 92% 2%,rgba(5,150,105,.05),transparent 38%);
-      background-attachment:fixed;background-repeat:no-repeat}
+    /* Visual system aligned with maschacham.com — clean white, green gradient headlines */
+    body{font-family:system-ui,'Segoe UI',Arial,sans-serif}
     input,select{transition:border-color .15s,box-shadow .15s}
     input:focus,select:focus{outline:none;border-color:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,.18)}
-    /* hero: layered glow + subtle dot-grid that fades downward */
-    .hero-deco{position:relative;overflow:hidden}
-    .hero-deco::before{content:"";position:absolute;inset:0;pointer-events:none;
-      background-image:radial-gradient(circle at 16% 18%,rgba(255,255,255,.16),transparent 40%),radial-gradient(circle at 86% 6%,rgba(52,211,153,.22),transparent 44%)}
-    .hero-deco::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;
-      background-image:radial-gradient(rgba(255,255,255,.10) 1px,transparent 1px);background-size:22px 22px;
-      -webkit-mask-image:linear-gradient(to bottom,#000,transparent 78%);mask-image:linear-gradient(to bottom,#000,transparent 78%)}
-    .hero-deco>*{position:relative;z-index:1}
-    /* premium layered card shadow */
-    .card{box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.16)}
+    .hero-bg{background:radial-gradient(ellipse at top right,rgba(16,185,129,.10),transparent 55%),radial-gradient(ellipse at bottom left,rgba(59,130,246,.05),transparent 52%)}
+    .gradient-text{background:linear-gradient(135deg,#059669,#10b981 50%,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    @keyframes fadeInUp{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .animate-fade-in-up{animation:fadeInUp .7s ease-out both}
+    .card{box-shadow:0 1px 2px rgba(16,24,40,.04),0 10px 26px -14px rgba(16,24,40,.14)}
     .lift{transition:transform .18s ease,box-shadow .18s ease}
-    .lift:hover{transform:translateY(-3px);box-shadow:0 14px 34px -14px rgba(16,24,40,.24)}
-    /* highlighter for emphasis words */
-    .mark{background:linear-gradient(transparent 58%,rgba(251,191,36,.5) 0);padding:0 .1em;border-radius:2px}
-    /* CTA sheen sweep on hover */
+    .lift:hover{transform:translateY(-3px);box-shadow:0 14px 34px -14px rgba(16,24,40,.22)}
     .cta{position:relative;overflow:hidden}
     .cta::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
-      background:linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);transition:left .6s ease}
+      background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .6s ease}
     .cta:hover::after{left:130%}
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
+<body class="bg-white text-slate-900 antialiased">
 
   <!-- Nav -->
   <nav class="bg-white/90 backdrop-blur border-b border-slate-100 px-6 py-3 sticky top-0 z-30">
@@ -81,23 +72,23 @@
   </nav>
 
   <!-- Hero -->
-  <header class="hero-deco bg-gradient-to-br from-brand-600 to-brand-900 text-white px-6 pt-12 pb-16">
-    <div class="max-w-2xl mx-auto text-center animate-floatUp">
-      <span class="inline-flex items-center gap-2 bg-white/10 ring-1 ring-white/25 text-xs font-medium px-3 py-1.5 rounded-full mb-5 backdrop-blur-sm"><span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span>חינם · בלי הרשמה · 60 שניות · נתוני צו ת"א 2026</span>
-      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 leading-[1.1] tracking-tight">משלמים יותר מדי<br>ארנונה?</h1>
-      <p class="text-brand-100 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-2">בדקו בחינם וגלו אם מגיע לכם <strong class="text-white"><span class="mark">החזר של אלפי שקלים</span></strong> — מזהים אזור שגוי, חיוב‑יתר והנחות שלא נוצלו.</p>
-      <p class="text-brand-100/80 text-sm max-w-xl mx-auto mb-7">לפי צו הארנונה הרשמי של עיריית תל אביב‑יפו · ומפיקים תיק השגה מוכן.</p>
-      <a href="#check" class="cta lift inline-block bg-white text-brand-700 hover:bg-brand-50 font-extrabold text-lg px-8 py-4 rounded-2xl shadow-xl shadow-black/20 ring-1 ring-black/5">לבדיקה חינמית ←</a>
-      <div class="flex flex-wrap justify-center gap-x-5 gap-y-2 mt-7 text-xs text-brand-50/90">
-        <span>✓ נתוני עירייה רשמיים</span>
-        <span>✓ זיהוי אזור אוטומטי</span>
-        <span>✓ בלי להשאיר פרטים</span>
-      </div>
+  <header class="hero-bg px-6 pt-14 pb-12">
+    <div class="max-w-2xl mx-auto text-center animate-fade-in-up">
+      <span class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6"><span aria-hidden="true" class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>חינם · בלי הרשמה · 60 שניות · צו ת"א 2026</span>
+      <h1 class="text-4xl sm:text-6xl font-extrabold leading-[1.05] mb-5 tracking-tight">משלמים יותר מדי ארנונה?<br><span class="gradient-text">בדקו בחינם</span></h1>
+      <p class="text-lg sm:text-xl text-slate-600 mb-3 max-w-xl mx-auto leading-relaxed">גלו אם מגיע לכם <strong class="text-slate-900">החזר של אלפי שקלים</strong> — מזהים אזור שגוי, חיוב‑יתר והנחות שלא נוצלו.</p>
+      <p class="text-sm text-slate-500 mb-8 max-w-xl mx-auto">לפי צו הארנונה הרשמי של עיריית תל אביב‑יפו · ומפיקים תיק השגה מוכן.</p>
+      <a href="#check" class="cta inline-block bg-brand-700 hover:bg-brand-900 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg shadow-brand-500/25 transition">לבדיקה חינמית ←</a>
+      <ul class="max-w-xl mx-auto mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-slate-700">
+        <li class="inline-flex items-center gap-1.5"><svg aria-hidden="true" class="w-4 h-4 text-brand-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>נתוני עירייה רשמיים</li>
+        <li class="inline-flex items-center gap-1.5"><svg aria-hidden="true" class="w-4 h-4 text-brand-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>זיהוי אזור אוטומטי</li>
+        <li class="inline-flex items-center gap-1.5"><svg aria-hidden="true" class="w-4 h-4 text-brand-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>בלי להשאיר פרטים</li>
+      </ul>
     </div>
   </header>
 
   <!-- How it works -->
-  <section class="max-w-3xl mx-auto px-6 -mt-9">
+  <section class="max-w-3xl mx-auto px-6 mt-2">
     <div class="grid grid-cols-3 gap-3 sm:gap-4">
       <div class="card bg-white rounded-2xl border border-slate-100 p-4 sm:p-5 text-center lift">
         <div class="mx-auto w-11 h-11 rounded-2xl bg-brand-50 ring-1 ring-brand-100 flex items-center justify-center text-2xl mb-2">🔎</div>
