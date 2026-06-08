@@ -74,10 +74,23 @@
 
   <main class="max-w-2xl mx-auto px-6 pt-10 pb-8">
 
+    <p class="text-center text-xs text-slate-400 mb-4">אתר עצמאי · <strong class="font-semibold text-slate-500">אינו אתר רשמי של עיריית תל אביב‑יפו ואינו פועל מטעמה</strong> · שירות מידע בלבד.</p>
+
     <!-- INPUT FORM -->
     <div id="check" class="bg-white rounded-3xl shadow-lg shadow-slate-200/60 border border-slate-100 p-6 sm:p-8 mb-6 scroll-mt-20">
       <h2 class="font-extrabold text-xl mb-1">בדיקת חשבון הארנונה</h2>
-      <p class="text-xs text-slate-500 mb-5">מלא/י את הפרטים מהשובר. 🔒 הכל נשאר בדפדפן שלך — לא נשמר ולא נשלח לשרת.</p>
+      <p class="text-xs text-slate-500 mb-4">🔒 הכל נשאר בדפדפן שלך — לא נשמר ולא נשלח לשרת. בלי הרשמה.</p>
+
+      <div class="flex items-center gap-2 mb-5 text-xs font-semibold">
+        <span id="dot1" class="px-2.5 py-1 rounded-full bg-brand-600 text-white">1 · כתובת</span>
+        <span class="text-slate-300">—</span>
+        <span id="dot2" class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-500">2 · פרטי השובר</span>
+      </div>
+
+      <!-- STEP 1 — address -->
+      <div class="step" data-step="1">
+        <p class="font-bold text-slate-900 mb-1">שלב 1 — מה הכתובת שלך?</p>
+        <p class="text-xs text-slate-500 mb-3">נזהה את אזור הארנונה הרשמי שלך — גם בלי השובר ביד.</p>
 
       <!-- GIS auto-detect: the killer feature — official arnona zone from address -->
       <div class="bg-gradient-to-br from-brand-50 to-emerald-50 border border-brand-100 rounded-2xl p-4 mb-5">
@@ -86,8 +99,19 @@
           <input id="address" type="text" placeholder='רחוב ומספר — לדוגמה: דיזנגוף 100' class="flex-1 border border-slate-300 rounded-xl px-3 py-2.5">
           <button id="detectBtn" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-bold px-5 rounded-xl whitespace-nowrap lift">זהה אזור</button>
         </div>
-        <p id="detectStatus" class="text-xs mt-2 text-slate-500">נשווה את האזור הרשמי לכתובת מול האזור שבשובר — אזור שגוי הוא הטעות הנפוצה ביותר.</p>
+        <p id="detectStatus" class="text-xs mt-2 text-slate-500">נזהה את האזור הרשמי לכתובת; את שאר הפרטים נמלא בשלב הבא — מהשובר.</p>
       </div>
+
+        <button id="toStep2" class="mt-4 w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl transition">המשך — פרטי השובר ←</button>
+        <p class="text-center text-xs text-slate-400 mt-2">אין לך את השובר עכשיו? קיבלת את האזור — חזור/חזרי כשהוא לידך.</p>
+      </div>
+      <!-- /STEP 1 -->
+
+      <!-- STEP 2 — bill details -->
+      <div class="step hidden" data-step="2">
+        <button id="backStep1" class="text-sm text-brand-700 hover:underline mb-3">→ חזרה לכתובת</button>
+        <p class="font-bold text-slate-900 mb-1">שלב 2 — מה כתוב בשובר?</p>
+        <p class="text-xs text-slate-500 mb-4">העתק/י מהשובר. התעריף והסכום אופציונליים אך משפרים את הבדיקה.</p>
 
       <div class="grid sm:grid-cols-2 gap-4">
         <div>
@@ -159,10 +183,27 @@
 
       <button id="checkBtn" class="mt-6 w-full bg-gradient-to-l from-brand-600 to-brand-700 hover:from-brand-700 hover:to-brand-900 text-white font-extrabold text-lg py-4 rounded-2xl shadow-lg shadow-brand-500/25 transition">בדוק עכשיו — חינם ←</button>
       <p class="text-center text-xs text-slate-400 mt-2">ללא עלות · ללא הרשמה · תוצאה מיידית</p>
+      </div>
+      <!-- /STEP 2 -->
     </div>
 
     <!-- RESULT -->
     <div id="result" class="hidden"></div>
+
+    <script>
+      (function(){
+        const steps = document.querySelectorAll('#check .step');
+        const dot1 = document.getElementById('dot1'), dot2 = document.getElementById('dot2');
+        function show(n){
+          steps.forEach(el => el.classList.toggle('hidden', Number(el.dataset.step) !== n));
+          if (dot1) dot1.className = 'px-2.5 py-1 rounded-full ' + (n===1 ? 'bg-brand-600 text-white' : 'bg-slate-100 text-slate-500');
+          if (dot2) dot2.className = 'px-2.5 py-1 rounded-full ' + (n===2 ? 'bg-brand-600 text-white' : 'bg-slate-100 text-slate-500');
+          document.getElementById('check').scrollIntoView({ behavior:'smooth', block:'start' });
+        }
+        const b2 = document.getElementById('toStep2'); if (b2) b2.addEventListener('click', () => show(2));
+        const b1 = document.getElementById('backStep1'); if (b1) b1.addEventListener('click', () => show(1));
+      })();
+    </script>
 
     <p class="text-xs text-slate-400 leading-relaxed mt-6">
       💡 פער בשטח המחויב עשוי לדרוש מדידת מודד מוסמך כדי להוכיח. זיהוי האזור מבוסס על מפת אזורי הארנונה הרשמית של עיריית תל אביב‑יפו.
@@ -196,6 +237,7 @@
       </div>
       <p class="mb-3"><a href="/terms" class="underline hover:text-white">תקנון</a> · <a href="/privacy" class="underline hover:text-white">מדיניות פרטיות</a> · <a href="/accessibility" class="underline hover:text-white">הצהרת נגישות</a></p>
       <p class="mb-2 text-slate-500">בדיקת ארנונה חינמית · תל אביב · מבוסס צו הארנונה 2026 של עיריית תל אביב‑יפו.</p>
+      <p class="mb-2 text-slate-500">אתר עצמאי — אינו אתר רשמי של עיריית תל אביב‑יפו ואינו פועל מטעמה.</p>
       <p>🧪 גרסת BETA — שירות מידע בלבד, אינו ייעוץ משפטי או מקצועי. הבדיקה היא הערכה; הסכום הסופי וההחזר נקבעים ע"י העירייה / ועדת ערר.</p>
     </div>
   </footer>
