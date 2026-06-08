@@ -129,18 +129,42 @@
         <span class="font-bold text-sm">תוצאת הבדיקה</span>
         <span class="text-[11px] bg-white/20 px-2 py-0.5 rounded-full">דוגמה להמחשה</span>
       </div>
-      <div class="p-4 sm:p-5 space-y-2.5">
-        <div class="flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 px-4 py-3">
-          <span class="shrink-0">⚠️</span>
-          <div><p class="font-bold text-sm text-red-900">ייתכן חיוב‑יתר של כ‑₪1,840 בשנה</p><p class="text-xs text-red-800/80 mt-0.5">בשובר נרשם אזור 2 במקום אזור 3 הרשמי לכתובת.</p></div>
+      <div class="p-4 sm:p-5 space-y-3 text-sm">
+        <!-- what the user entered -->
+        <div class="rounded-xl bg-slate-50 border border-slate-200 p-3">
+          <p class="text-[11px] font-bold text-slate-500 mb-2">מה הזנת מהשובר</p>
+          <div class="grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs text-slate-700">
+            <span>כתובת: <strong class="text-slate-900">דיזנגוף 100</strong></span>
+            <span>שטח: <strong class="text-slate-900">120 מ"ר</strong></span>
+            <span>אזור בשובר: <strong class="text-slate-900">2</strong> · ₪72.89/מ"ר</span>
+            <span>חיוב שנתי: <strong class="text-slate-900">₪8,747</strong></span>
+          </div>
         </div>
-        <div class="flex items-start gap-2.5 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3">
-          <span class="shrink-0">💰</span>
-          <div><p class="font-bold text-sm text-brand-900">הנחת אזרח ותיק שלא נוצלה — עד 30%</p><p class="text-xs text-emerald-800/80 mt-0.5">בכפוף למבחן הכנסה.</p></div>
+        <!-- what we detected -->
+        <div class="rounded-xl bg-brand-50 border border-brand-100 p-3">
+          <p class="text-[11px] font-bold text-brand-700 mb-2">מה זיהינו — מפת העירייה + צו 2026</p>
+          <div class="grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs text-slate-700">
+            <span>אזור רשמי לכתובת: <strong class="text-brand-800">3</strong> · ₪63.01/מ"ר</span>
+            <span>חיוב צפוי: <strong class="text-brand-800">₪7,561</strong></span>
+          </div>
         </div>
-        <div class="flex items-center gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+        <!-- the gap -->
+        <div class="rounded-xl border border-red-200 bg-red-50 px-4 py-3">
+          <p class="font-bold text-red-900">⚠️ ייתכן חיוב‑יתר של כ‑₪1,190 בשנה</p>
+          <p class="text-xs text-red-800/80 mt-0.5">≈ ₪8,300 מצטבר עם החזר רטרואקטיבי עד 7 שנים אחורה.</p>
+        </div>
+        <!-- the ground + strength -->
+        <div class="rounded-xl border border-slate-200 bg-white p-3">
+          <div class="flex items-center justify-between gap-2 mb-1.5">
+            <p class="text-[11px] font-bold text-slate-500">העילה האפשרית</p>
+            <span class="text-[11px] font-bold text-red-700 bg-red-50 border border-red-200 px-2 py-0.5 rounded-full whitespace-nowrap">עוצמת העילה: גבוהה</span>
+          </div>
+          <p class="text-xs text-slate-700 leading-relaxed">טעות באזור המס — הנכס חויב לפי <strong>אזור 2</strong> במקום <strong>אזור 3</strong> הרשמי לכתובת (לפי מפת הארנונה של העירייה). אי‑התאמת אזור היא עילה חזקה במיוחד להשגה.</p>
+        </div>
+        <!-- objection packet -->
+        <div class="flex items-center gap-2.5 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3">
           <span class="shrink-0">📄</span>
-          <p class="font-bold text-sm text-slate-800">תיק השגה מוכן להגשה — בתוך חלון של 90 יום</p>
+          <p class="font-bold text-sm text-brand-900">תיק השגה מוכן להגשה — בתוך חלון של 90 יום</p>
         </div>
       </div>
     </div>
