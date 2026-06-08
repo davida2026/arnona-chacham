@@ -330,16 +330,27 @@
   // Israeli geocoder). Then point-in-polygon against the TLV residential arnona
   // zones layer, which returns both the residential (k_ezor_meg) and non-residential
   // (k_ezor_asak) zone for the point.
+  // fetch JSON with a hard timeout so the UI NEVER hangs if an upstream service
+  // (OSM geocoder or the city GIS) is slow or unavailable.
+  async function fetchJSON(url, timeoutMs) {
+    const ctrl = new AbortController();
+    const to = setTimeout(() => ctrl.abort(), timeoutMs || 8000);
+    try {
+      const r = await fetch(url, { signal: ctrl.signal });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return await r.json();
+    } finally { clearTimeout(to); }
+  }
   async function geocode(addr) {
     const url = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=il&q=' + encodeURIComponent(addr + ', תל אביב');
-    const j = await (await fetch(url)).json();
+    const j = await fetchJSON(url, 8000);
     return j[0] ? { lat: +j[0].lat, lon: +j[0].lon } : null;
   }
   async function zoneAt(lat, lon) {
     const geom = encodeURIComponent(JSON.stringify({ x: lon, y: lat, spatialReference: { wkid: 4326 } }));
     const url = 'https://gisn.tel-aviv.gov.il/arcgis/rest/services/IView2/MapServer/589/query'
       + '?f=json&geometry=' + geom + '&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=k_ezor_meg,k_ezor_asak&returnGeometry=false';
-    const j = await (await fetch(url)).json();
+    const j = await fetchJSON(url, 8000);
     const a = j.features && j.features[0] && j.features[0].attributes;
     return a ? { res: String(a.k_ezor_meg), nonres: String(a.k_ezor_asak) } : null;
   }
@@ -349,19 +360,29 @@
     const st = $('detectStatus');
     const set = (txt, cls) => { st.innerHTML = txt; st.className = 'text-xs mt-2 ' + cls; };
     if (!addr) { set('הזן/י כתובת (רחוב ומספר).', 'text-red-600'); return; }
-    set('מזהה…', 'text-slate-500');
+    const btn = $('detectBtn');
+    btn.disabled = true; btn.classList.add('opacity-60');
+    set('מזהה אזור… <span class="text-slate-400">(עד 8 שניות)</span>', 'text-slate-500');
     window.__detected = null;
     try {
       const g = await geocode(addr);
-      if (!g) { set('לא נמצאה הכתובת. אפשר לבחור אזור ידנית מהשובר.', 'text-amber-700'); return; }
-      const z = await zoneAt(g.lat, g.lon);
-      if (!z) { set('הכתובת אותרה אך מחוץ למפת אזורי הארנונה של ת"א. בחר/י אזור ידנית.', 'text-amber-700'); return; }
+      if (!g) { set('לא נמצאה הכתובת. אפשר להמשיך ולבחור אזור ידנית מהשובר ←', 'text-amber-700'); return; }
+      let z = null;
+      try { z = await zoneAt(g.lat, g.lon); }
+      catch (gisErr) {
+        // City GIS unavailable (it occasionally returns 502/503) — don't block the user.
+        set('הכתובת אותרה, אך שירות מפת האזורים של העירייה אינו זמין כרגע. אפשר להמשיך — בחר/י את האזור מתוך השובר בשלב הבא ←', 'text-amber-700');
+        return;
+      }
+      if (!z) { set('הכתובת אותרה אך מחוץ למפת אזורי הארנונה של ת"א. אפשר לבחור אזור ידנית בשלב הבא ←', 'text-amber-700'); return; }
       window.__detected = z;
       const isRes = $('propType').value === 'res';
       const zoneNum = isRes ? z.res : z.nonres;
-      set('✓ אזור הארנונה הרשמי לכתובת: <strong>אזור ' + zoneNum + '</strong> (' + (isRes ? 'מגורים' : 'לא מגורים') + '). אם בשובר רשום אזור אחר — ייתכן חיוב‑יתר. לחצ/י "בדוק עכשיו".', 'text-emerald-700');
+      set('✓ אזור הארנונה הרשמי לכתובת: <strong>אזור ' + zoneNum + '</strong> (' + (isRes ? 'מגורים' : 'לא מגורים') + '). אם בשובר רשום אזור אחר — ייתכן חיוב‑יתר. המשך/י ל"פרטי השובר".', 'text-emerald-700');
     } catch (e) {
-      set('שגיאת רשת בזיהוי. נסה/י שוב, או בחר/י אזור ידנית.', 'text-red-600');
+      set('לא הצלחנו לזהות אוטומטית כרגע. אפשר להמשיך — בחר/י את האזור מתוך השובר בשלב הבא ←', 'text-amber-700');
+    } finally {
+      btn.disabled = false; btn.classList.remove('opacity-60');
     }
   });
 
