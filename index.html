@@ -11,6 +11,25 @@
   <meta property="og:url" content="https://myarnona.com/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="he_IL">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "WebSite", "@id": "https://myarnona.com/#website", "url": "https://myarnona.com/", "name": "ארנונה חכמה", "inLanguage": "he-IL", "publisher": { "@id": "https://myarnona.com/#org" } },
+      { "@type": "Organization", "@id": "https://myarnona.com/#org", "name": "ארנונה חכמה", "url": "https://myarnona.com/", "description": "בדיקת ארנונה חינמית — תל אביב וירושלים" },
+      { "@type": "WebApplication", "name": "ארנונה חכמה — בודק ארנונה", "url": "https://myarnona.com/", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "inLanguage": "he-IL", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "ILS" }, "description": "בדיקת ארנונה חינמית לפי צו הארנונה הרשמי — מזהה אזור שגוי, חיוב-יתר והנחות שלא נוצלו, ומפיק תיק השגה." },
+      { "@type": "FAQPage", "mainEntity": [
+        { "@type": "Question", "name": "איך יודעים אם משלמים יותר מדי ארנונה?", "acceptedAnswer": { "@type": "Answer", "text": "בודקים שהאזור, השטח והסיווג בשובר נכונים, ואם מגיעות הנחות שלא נוצלו. הכלי החינמי של ארנונה חכמה משווה את הנתונים לצו הארנונה הרשמי תוך כ-60 שניות." } },
+        { "@type": "Question", "name": "מה זה אזור ארנונה ואיך יודעים באיזה אזור אני?", "acceptedAnswer": { "@type": "Answer", "text": "תל אביב מחולקת ל-5 אזורי מס למגורים, ולכל אזור תעריף שונה למ\"ר. האזור נקבע לפי כתובת הנכס; בכלי שלנו מזינים כתובת והמערכת שולפת את האזור הרשמי ממפת הארנונה של העירייה." } },
+        { "@type": "Question", "name": "כמה זמן יש להגיש השגת ארנונה?", "acceptedAnswer": { "@type": "Answer", "text": "90 יום מקבלת שובר הארנונה. זהו מועד קשיח שכמעט ולא ניתן להארכה." } },
+        { "@type": "Question", "name": "כמה שנים אחורה אפשר לקבל החזר ארנונה?", "acceptedAnswer": { "@type": "Answer", "text": "ניתן לתבוע החזר רטרואקטיבי עד כ-7 שנים אחורה, בכפוף לעובדות המקרה." } },
+        { "@type": "Question", "name": "האם הבדיקה חינמית?", "acceptedAnswer": { "@type": "Answer", "text": "כן — הבדיקה חינמית לחלוטין, ללא הרשמה. הנתונים מעובדים בדפדפן ואינם נשמרים." } }
+      ] }
+    ]
+  }
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { theme: { extend: { colors: { brand: {50:'#ecfdf5',100:'#d1fae5',500:'#10b981',600:'#059669',700:'#047857',900:'#064e3b'} },
@@ -226,6 +245,24 @@
         <li><a href="/madrich/objection" class="text-brand-700 hover:underline">› איך מגישים השגת ארנונה — צעד אחר צעד (90 יום)</a></li>
         <li><a href="/madrich/zones" class="text-brand-700 hover:underline">› אזורי הארנונה של תל אביב — באיזה אזור אתה?</a></li>
       </ul>
+    </div>
+
+    <!-- SEO text -->
+    <div class="mt-8 bg-white rounded-2xl border border-slate-100 shadow-sm p-5 text-sm text-slate-600 leading-relaxed">
+      <h2 class="font-bold text-slate-900 text-base mb-2">בדיקת ארנונה בתל אביב — חינם</h2>
+      <p>ארנונה חכמה הוא כלי חינמי ל<strong>בדיקת ארנונה</strong> בתל אביב‑יפו. רבים משלמים <strong>יותר מדי ארנונה</strong> בגלל אזור מס שגוי, שטח מחויב מנופח, סיווג לא נכון או הנחות שלא נוצלו — והעירייה אינה מתקנת זאת מיוזמתה. הכלי משווה את נתוני השובר ל<strong>צו הארנונה הרשמי לשנת 2026</strong>, מזהה את אזור הארנונה לפי הכתובת, ומפיק <strong>תיק השגה מוכן</strong> להגשה עצמית — תוך 90 יום מקבלת השובר, עם החזר רטרואקטיבי עד כ‑7 שנים אחורה.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-6 bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+      <h2 class="font-bold text-base mb-3">שאלות נפוצות</h2>
+      <div class="space-y-2 text-sm">
+        <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">איך יודעים אם משלמים יותר מדי ארנונה?</summary><p class="text-slate-600 mt-1">בודקים שהאזור, השטח והסיווג בשובר נכונים, ואם מגיעות הנחות שלא נוצלו. הכלי החינמי שלנו משווה לצו הארנונה הרשמי תוך כ‑60 שניות.</p></details>
+        <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">מה זה אזור ארנונה ואיך יודעים באיזה אזור אני?</summary><p class="text-slate-600 mt-1">תל אביב מחולקת ל‑5 אזורי מס, ולכל אזור תעריף שונה. מזינים כתובת והמערכת שולפת את האזור הרשמי ממפת העירייה.</p></details>
+        <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">כמה זמן יש להגיש השגת ארנונה?</summary><p class="text-slate-600 mt-1">90 יום מקבלת השובר — מועד קשיח.</p></details>
+        <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">כמה שנים אחורה אפשר לקבל החזר?</summary><p class="text-slate-600 mt-1">עד כ‑7 שנים אחורה, בכפוף לעובדות.</p></details>
+        <details class="pb-1"><summary class="font-semibold cursor-pointer">האם הבדיקה חינמית?</summary><p class="text-slate-600 mt-1">כן — חינם לגמרי, בלי הרשמה, והנתונים לא נשמרים.</p></details>
+      </div>
     </div>
   </main>
 
