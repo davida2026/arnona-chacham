@@ -102,12 +102,57 @@
 
     <p class="text-center text-xs text-slate-400 mb-4">אתר עצמאי · <strong class="font-semibold text-slate-500">אינו אתר רשמי של עיריית חיפה ואינו פועל מטעמה</strong> · שירות מידע בלבד.</p>
 
+    <!-- Result preview — illustrative -->
+    <div class="mb-6">
+      <p class="text-center text-xs font-semibold text-slate-400 mb-3">ככה נראית תוצאת בדיקה</p>
+      <div class="card bg-white rounded-3xl border border-slate-100 overflow-hidden">
+        <div class="bg-gradient-to-l from-brand-600 to-brand-700 text-white px-5 py-3 flex items-center justify-between">
+          <span class="font-bold text-sm">תוצאת הבדיקה</span>
+          <span class="text-[11px] bg-white/20 px-2 py-0.5 rounded-full">דוגמה להמחשה</span>
+        </div>
+        <div class="p-4 sm:p-5 space-y-3 text-sm">
+          <div class="rounded-xl bg-slate-50 border border-slate-200 p-3">
+            <p class="text-[11px] font-bold text-slate-500 mb-2">מה הזנת מהשובר</p>
+            <div class="grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs text-slate-700">
+              <span>אזור: <strong class="text-slate-900">ב</strong></span>
+              <span>שטח שמדדת: <strong class="text-slate-900">95 מ"ר</strong></span>
+              <span>תעריף בשובר: <strong class="text-slate-900">₪90.50/מ"ר</strong></span>
+              <span>חיוב שנתי: <strong class="text-slate-900">₪10,408</strong></span>
+            </div>
+          </div>
+          <div class="rounded-xl bg-brand-50 border border-brand-100 p-3">
+            <p class="text-[11px] font-bold text-brand-700 mb-2">החיוב הצפוי — צו חיפה 2026</p>
+            <div class="grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs text-slate-700">
+              <span>95 מ"ר × ₪90.50</span>
+              <span>חיוב צפוי: <strong class="text-brand-800">₪8,598</strong></span>
+            </div>
+          </div>
+          <div class="rounded-xl border border-red-200 bg-red-50 px-4 py-3">
+            <p class="font-bold text-red-900">⚠️ ייתכן חיוב‑יתר של כ‑₪1,810 בשנה</p>
+            <p class="text-xs text-red-800/80 mt-0.5">≈ ₪12,700 מצטבר עם החזר רטרואקטיבי עד 7 שנים אחורה.</p>
+          </div>
+          <div class="rounded-xl border border-slate-200 bg-white p-3">
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <p class="text-[11px] font-bold text-slate-500">העילה האפשרית</p>
+              <span class="text-[11px] font-bold text-red-700 bg-red-50 border border-red-200 px-2 py-0.5 rounded-full whitespace-nowrap">עוצמת העילה: גבוהה</span>
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed">שטח מחויב מנופח — החיוב בשובר תואם כ‑<strong>115 מ"ר</strong>, אך מדדת <strong>95 מ"ר</strong>. פער שטח מוכח (מדידת מודד) הוא עילה חזקה להשגה.</p>
+          </div>
+          <div class="flex items-center gap-2.5 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3">
+            <span class="shrink-0">📄</span>
+            <p class="font-bold text-sm text-brand-900">תיק השגה מוכן להגשה — בתוך חלון של 90 יום</p>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-xs text-slate-400 mt-2">דוגמה להמחשה בלבד · הבדיקה שלך מבוססת על הנתונים שתזין/י וצו הארנונה הרשמי.</p>
+    </div>
+
     <div id="check" class="bg-white rounded-3xl shadow-lg shadow-slate-200/60 border border-slate-100 p-6 sm:p-8 mb-6 scroll-mt-20">
       <h2 class="font-extrabold text-xl mb-1">בדיקת חשבון הארנונה — חיפה</h2>
       <p class="text-xs text-slate-500 mb-5">מלא/י את הפרטים מהשובר. 🔒 הכל נשאר בדפדפן שלך — לא נשמר ולא נשלח לשרת.</p>
 
       <div class="bg-brand-50 border border-brand-100 rounded-2xl p-4 mb-5 text-xs text-slate-600 leading-relaxed">
-        💡 בחיפה הארנונה מחולקת ל‑4 אזורים (א'–ד'). נציג את התעריף הרשמי <strong>לדירה רגילה</strong> באזור שתבחר/י כ‑benchmark — ולמי שיש סיווג/גודל אחר או קריית חיים, נשתמש בתעריף שתזין/י מהשובר.
+        💡 בחיפה הארנונה מחולקת ל‑4 אזורים (א'–ד'). נציג את התעריף הרשמי <strong>לדירה רגילה</strong> באזור שתבחר/י כ‑benchmark — ולמי שיש סיווג/גודל אחר או קריית חיים, נשתמש בתעריף שתזין/י מהשובר.<br><br>📄 <strong>לא בטוח/ה איפה זה בשובר?</strong> <strong>אזור</strong> = אזור המס של הרחוב · <strong>תעריף למ"ר</strong> = הסכום לכל מטר רבוע · <strong>חיוב שנתי</strong> = הסכום הכולל לשנה. כולם מופיעים בשובר הארנונה השנתי, בפירוט החיוב.
       </div>
 
       <div class="grid sm:grid-cols-2 gap-4">
@@ -278,7 +323,7 @@
           <a href="https://www.haifa.muni.il/" target="_blank" rel="noopener" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-lg">לאתר עיריית חיפה ←</a>
         </div></div>`;
     }
-    h += '<p class="text-xs text-slate-400 mt-4">הערכה בלבד · מבוסס צו הארנונה חיפה 2026 · אינו ייעוץ. אימות מול העירייה / ועדת ערר.</p></div>';
+    h += '<p class="text-xs text-slate-400 mt-4 border-t border-slate-100 pt-3">ⓘ <strong>התוצאה היא אינדיקציה בלבד</strong> — לא ייעוץ ולא קביעה סופית. הקביעה והאימות הם מול העירייה / ועדת ערר. מבוסס צו הארנונה חיפה 2026.</p></div>';
     const r = $('result'); r.innerHTML = h;
     const ob = document.getElementById('objBtn'); if (ob) ob.addEventListener('click', () => buildObjectionDoc(window.__lastResult));
     r.querySelectorAll('a[target="_blank"]').forEach(a => { a.addEventListener('click', function (e) { e.preventDefault(); let w=null; try { w=window.open(this.href,'_blank'); } catch(_){} if (w) { try { w.opener=null; } catch(_){} } else { window.location.href=this.href; } }); });
