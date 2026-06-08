@@ -62,14 +62,26 @@
     </div>
   </nav>
 
-  <header class="hero-bg border-b border-slate-100 px-6 pt-14 pb-14">
-    <div class="max-w-2xl mx-auto text-center animate-fade-in-up">
+  <header class="hero-bg border-b border-slate-100 px-6 pt-20 sm:pt-24 pb-14">
+    <div class="max-w-3xl mx-auto text-center animate-fade-in-up">
       <span class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6"><span aria-hidden="true" class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>חיפה · חינם · בלי הרשמה · צו ארנונה 2026</span>
-      <h1 class="text-3xl sm:text-5xl font-extrabold leading-[1.1] mb-5 tracking-tight">משלמים יותר מדי <span class="gradient-text">ארנונה</span> בחיפה?</h1>
+      <h1 class="text-4xl sm:text-6xl font-extrabold leading-[1.08] mb-5 tracking-tight">משלמים יותר מדי <span class="gradient-text">ארנונה</span> בחיפה?</h1>
       <p class="text-lg sm:text-xl text-slate-600 mb-8 max-w-xl mx-auto leading-relaxed">בדקו לפי צו הארנונה של עיריית חיפה 2026 — משווים את התעריף שבשובר לתעריף הרשמי, מסמנים חיוב‑יתר והנחות שלא נוצלו, ומפיקים תיק השגה מוכן.</p>
       <a href="#check" class="cta inline-block bg-brand-700 hover:bg-brand-900 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg shadow-brand-500/25 transition">לבדיקה חינמית ←</a>
     </div>
   </header>
+
+  <!-- Social proof — dark callout -->
+  <section class="px-6 mt-10">
+    <div class="max-w-3xl mx-auto">
+      <div class="bg-slate-900 text-white rounded-3xl p-7 sm:p-9 text-center shadow-xl">
+        <p class="text-2xl sm:text-4xl font-extrabold leading-tight mb-3">בחיפה נמצאו <span class="gradient-text">~60 מיליון ₪</span><br>בגביית‑יתר ארנונה</p>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">לפי <strong class="text-white">התנועה לחופש המידע</strong> (2022) — שלא הוחזרו לתושבים אוטומטית. ולפי <strong class="text-white">מבקר המדינה</strong> (2026), כ‑<strong class="text-white">40%</strong> מהתלונות על גביית ארנונה נמצאו מוצדקות.</p>
+        <p class="text-xs text-slate-400 mt-5">מקורות: <a href="https://www.meida.org.il/13556" target="_blank" rel="noopener" class="underline hover:text-white">התנועה לחופש המידע</a> · <a href="https://www.ynet.co.il/economy/article/bjsi00qjwwe" target="_blank" rel="noopener" class="underline hover:text-white">מבקר המדינה</a></p>
+        <p class="text-[11px] text-slate-500 mt-2">מובא לצורך מידע בלבד · ארנונה חכמה אינו קשור לגופים אלה ואינו פועל מטעמם.</p>
+      </div>
+    </div>
+  </section>
 
   <main class="max-w-2xl mx-auto px-6 pt-10 pb-8">
 
@@ -138,12 +150,6 @@
 
     <div id="result" class="hidden"></div>
 
-    <!-- As reported -->
-    <div class="mt-6 card bg-brand-50 border border-brand-100 rounded-2xl p-4 text-sm text-slate-700 leading-relaxed">
-      📊 לפי <strong>התנועה לחופש המידע</strong> (2022), עיריית חיפה נמצאה מחזיקה <strong>כ‑60 מיליון ₪</strong> בגביית‑יתר ארנונה שלא הוחזרו לתושבים אוטומטית. ולפי <strong>מבקר המדינה</strong> (2026), כ‑<strong>40%</strong> מהתלונות על גביית ארנונה נמצאו מוצדקות. <a href="https://www.meida.org.il/13556" target="_blank" rel="noopener" class="text-brand-700 hover:underline whitespace-nowrap">מקור ←</a>
-      <span class="block text-[11px] text-slate-400 mt-2">מובא מהמקורות לצורך מידע בלבד. ארנונה חכמה אינו קשור לגופים אלה ואינו פועל מטעמם.</span>
-    </div>
-
     <p class="text-xs text-slate-400 leading-relaxed mt-6">💡 התעריף הרשמי לדירה רגילה לפי צו חיפה 2026. סיווגים מיוחדים (משופץ/פשוט/מרתף), גדלים שונים וקריית חיים — הזן/י את התעריף מהשובר. הערכה בלבד; הסכום הסופי נקבע ע"י העירייה / ועדת ערר.</p>
 
     <div class="mt-8 bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
@@ -167,7 +173,7 @@
         <div aria-hidden="true" class="w-8 h-8 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold">א</div>
         <span class="font-extrabold text-slate-200 text-base">ארנונה חכמה</span>
       </div>
-      <p class="mb-3"><a href="/terms" class="underline hover:text-white">תקנון</a> · <a href="/privacy" class="underline hover:text-white">מדיניות פרטיות</a> · <a href="/accessibility" class="underline hover:text-white">הצהרת נגישות</a></p>
+      <p class="mb-3"><a href="/about" class="underline hover:text-white text-slate-200">מי אנחנו</a> · <a href="/terms" class="underline hover:text-white">תקנון</a> · <a href="/privacy" class="underline hover:text-white">מדיניות פרטיות</a> · <a href="/accessibility" class="underline hover:text-white">הצהרת נגישות</a></p>
       <p class="mb-2 text-slate-500">בדיקת ארנונה חינמית · חיפה · מבוסס צו הארנונה 2026 של עיריית חיפה.</p>
       <p class="text-slate-500">אתר עצמאי — אינו אתר רשמי של עיריית חיפה ואינו פועל מטעמה.</p>
     </div>
