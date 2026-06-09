@@ -22,7 +22,7 @@
     "@context": "https://schema.org",
     "@graph": [
       { "@type": "WebSite", "@id": "https://myarnona.com/#website", "url": "https://myarnona.com/", "name": "ארנונה חכמה", "inLanguage": "he-IL", "publisher": { "@id": "https://myarnona.com/#org" } },
-      { "@type": "Organization", "@id": "https://myarnona.com/#org", "name": "ארנונה חכמה", "url": "https://myarnona.com/", "description": "כלי חינמי לבדיקת חיוב-יתר בארנונה לפי צו הארנונה הרשמי — תל אביב, ירושלים, חיפה, ראשון לציון, פתח תקווה, אשדוד ונתניה" },
+      { "@type": "Organization", "@id": "https://myarnona.com/#org", "name": "ארנונה חכמה", "url": "https://myarnona.com/", "description": "כלי חינמי לבדיקת חיוב-יתר בארנונה לפי צו הארנונה הרשמי — תל אביב, ירושלים, חיפה, ראשון לציון, פתח תקווה, אשדוד, נתניה ובאר שבע" },
       { "@type": "WebApplication", "name": "ארנונה חכמה — בודק ארנונה", "url": "https://myarnona.com/", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "inLanguage": "he-IL", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "ILS" }, "description": "בדיקת ארנונה חינמית לפי צו הארנונה הרשמי — מזהה אזור שגוי, חיוב-יתר והנחות שלא נוצלו, ומפיק תיק השגה." },
       { "@type": "FAQPage", "mainEntity": [
         { "@type": "Question", "name": "איך יודעים אם משלמים יותר מדי ארנונה?", "acceptedAnswer": { "@type": "Answer", "text": "בודקים שהאזור, השטח והסיווג בשובר נכונים, ואם מגיעות הנחות שלא נוצלו. הכלי החינמי של ארנונה חכמה משווה את הנתונים לצו הארנונה הרשמי תוך כ-60 שניות." } },
@@ -33,7 +33,7 @@
         { "@type": "Question", "name": "כמה עולה להגיש השגת ארנונה?", "acceptedAnswer": { "@type": "Answer", "text": "הגשת השגה למנהל הארנונה היא חינם — מגישים בעצמכם תוך 90 יום מקבלת השובר. ארנונה חכמה מפיק את תיק ההשגה בחינם, להגשה עצמית." } },
         { "@type": "Question", "name": "מה ההבדל בין השגה לערר על ארנונה?", "acceptedAnswer": { "@type": "Answer", "text": "השגה מוגשת תחילה למנהל הארנונה בעירייה, תוך 90 יום מקבלת השובר. אם ההשגה נדחית, ניתן להגיש ערר לוועדת ערר לארנונה תוך 30 יום מקבלת התשובה." } },
         { "@type": "Question", "name": "מהן העילות הנפוצות לחיוב-יתר בארנונה?", "acceptedAnswer": { "@type": "Answer", "text": "אזור מס שגוי בשובר, שטח מחויב מנופח, סיווג נכס לא נכון, או הנחה שמגיעה ולא נוצלה. ארנונה חכמה משווה את נתוני השובר לצו הרשמי ומסמן אי-התאמות." } },
-        { "@type": "Question", "name": "באילו ערים הכלי לבדיקת ארנונה עובד?", "acceptedAnswer": { "@type": "Answer", "text": "תל אביב (כולל זיהוי אזור אוטומטי לפי כתובת), ירושלים, חיפה, ראשון לציון, פתח תקווה, אשדוד ונתניה — לפי צו הארנונה הרשמי של כל עיר." } }
+        { "@type": "Question", "name": "באילו ערים הכלי לבדיקת ארנונה עובד?", "acceptedAnswer": { "@type": "Answer", "text": "תל אביב (כולל זיהוי אזור אוטומטי לפי כתובת), ירושלים, חיפה, ראשון לציון, פתח תקווה, אשדוד, נתניה ובאר שבע — לפי צו הארנונה הרשמי של כל עיר." } }
       ] }
     ]
   }
@@ -96,7 +96,7 @@
 
   <!-- City selector — high, signals multi-city coverage -->
   <section class="max-w-3xl mx-auto px-6 mt-8">
-    <p class="text-center text-sm font-bold text-slate-800 mb-1">בודקים ארנונה ב‑7 ערים</p>
+    <p class="text-center text-sm font-bold text-slate-800 mb-1">בודקים ארנונה ב‑8 ערים</p>
     <p class="text-center text-xs text-slate-500 mb-3">בחרו את העיר שלכם — או המשיכו עם תל אביב (כולל זיהוי אזור אוטומטי)</p>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5">
       <span aria-current="page" class="rounded-xl border-2 border-brand-500 bg-brand-50 py-2.5 text-center font-bold text-sm text-brand-800">תל אביב<span class="block text-[10px] font-normal text-brand-600">הדף הנוכחי</span></span>
@@ -106,6 +106,7 @@
       <a href="/petah-tikva" class="rounded-xl border border-slate-200 bg-white py-2.5 text-center font-bold text-sm text-slate-700 hover:border-brand-400 hover:bg-brand-50 transition lift">פתח תקווה<span class="block text-[10px] font-normal text-slate-400">בדיקת ארנונה</span></a>
       <a href="/ashdod" class="rounded-xl border border-slate-200 bg-white py-2.5 text-center font-bold text-sm text-slate-700 hover:border-brand-400 hover:bg-brand-50 transition lift">אשדוד<span class="block text-[10px] font-normal text-slate-400">בדיקת ארנונה</span></a>
       <a href="/netanya" class="rounded-xl border border-slate-200 bg-white py-2.5 text-center font-bold text-sm text-slate-700 hover:border-brand-400 hover:bg-brand-50 transition lift">נתניה<span class="block text-[10px] font-normal text-slate-400">בדיקת ארנונה</span></a>
+      <a href="/beersheva" class="rounded-xl border border-slate-200 bg-white py-2.5 text-center font-bold text-sm text-slate-700 hover:border-brand-400 hover:bg-brand-50 transition lift">באר שבע<span class="block text-[10px] font-normal text-slate-400">בדיקת ארנונה</span></a>
     </div>
   </section>
 
@@ -382,7 +383,7 @@
         <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">כמה עולה להגיש השגת ארנונה?</summary><p class="text-slate-600 mt-1">ההגשה למנהל הארנונה היא חינם — מגישים בעצמכם תוך 90 יום. ארנונה חכמה מפיק את תיק ההשגה בחינם, להגשה עצמית.</p></details>
         <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">מה ההבדל בין השגה לערר?</summary><p class="text-slate-600 mt-1">קודם מגישים <strong>השגה</strong> למנהל הארנונה (90 יום). אם נדחתה — <strong>ערר</strong> לוועדת ערר תוך 30 יום מקבלת התשובה.</p></details>
         <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">מהן העילות הנפוצות לחיוב‑יתר?</summary><p class="text-slate-600 mt-1">אזור מס שגוי, שטח מחויב מנופח, סיווג לא נכון, או הנחה שלא נוצלה.</p></details>
-        <details class="pb-1"><summary class="font-semibold cursor-pointer">באילו ערים הכלי עובד?</summary><p class="text-slate-600 mt-1">תל אביב (עם זיהוי אזור אוטומטי), ירושלים, חיפה, ראשון לציון, פתח תקווה, אשדוד ונתניה.</p></details>
+        <details class="pb-1"><summary class="font-semibold cursor-pointer">באילו ערים הכלי עובד?</summary><p class="text-slate-600 mt-1">תל אביב (עם זיהוי אזור אוטומטי), ירושלים, חיפה, ראשון לציון, פתח תקווה, אשדוד, נתניה ובאר שבע.</p></details>
       </div>
     </div>
     <!-- Responsibility disclaimer -->
@@ -409,7 +410,7 @@
         <span class="font-bold text-slate-200">ארנונה חכמה</span>
       </div>
       <p class="mb-3"><a href="/about" class="underline hover:text-white text-slate-200">מי אנחנו</a> · <a href="/terms" class="underline hover:text-white">תקנון</a> · <a href="/privacy" class="underline hover:text-white">מדיניות פרטיות</a> · <a href="/accessibility" class="underline hover:text-white">הצהרת נגישות</a></p>
-      <p class="mb-2 text-slate-500">בדיקת ארנונה חינמית · תל אביב · ירושלים · חיפה · ראשון לציון · פתח תקווה · אשדוד · נתניה · לפי צו הארנונה הרשמי של כל עיר.</p>
+      <p class="mb-2 text-slate-500">בדיקת ארנונה חינמית · תל אביב · ירושלים · חיפה · ראשון לציון · פתח תקווה · אשדוד · נתניה · באר שבע · לפי צו הארנונה הרשמי של כל עיר.</p>
       <p class="mb-2 text-slate-500">אתר עצמאי — אינו אתר רשמי של אף עירייה ואינו פועל מטעמה.</p>
       <p>🧪 גרסת BETA — שירות מידע בלבד, אינו ייעוץ משפטי או מקצועי. הבדיקה היא הערכה; הסכום הסופי וההחזר נקבעים ע"י העירייה / ועדת ערר.</p>
     </div>
