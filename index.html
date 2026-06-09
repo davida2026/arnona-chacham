@@ -29,7 +29,11 @@
         { "@type": "Question", "name": "מה זה אזור ארנונה ואיך יודעים באיזה אזור אני?", "acceptedAnswer": { "@type": "Answer", "text": "תל אביב מחולקת ל-5 אזורי מס למגורים, ולכל אזור תעריף שונה למ\"ר. האזור נקבע לפי כתובת הנכס; בכלי שלנו מזינים כתובת והמערכת שולפת את האזור הרשמי ממפת הארנונה של העירייה." } },
         { "@type": "Question", "name": "כמה זמן יש להגיש השגת ארנונה?", "acceptedAnswer": { "@type": "Answer", "text": "90 יום מקבלת שובר הארנונה. זהו מועד קשיח שכמעט ולא ניתן להארכה." } },
         { "@type": "Question", "name": "כמה שנים אחורה אפשר לקבל החזר ארנונה?", "acceptedAnswer": { "@type": "Answer", "text": "ניתן לתבוע החזר רטרואקטיבי עד כ-7 שנים אחורה, בכפוף לעובדות המקרה." } },
-        { "@type": "Question", "name": "האם הבדיקה חינמית?", "acceptedAnswer": { "@type": "Answer", "text": "כן — הבדיקה חינמית לחלוטין, ללא הרשמה. הנתונים מעובדים בדפדפן ואינם נשמרים." } }
+        { "@type": "Question", "name": "האם הבדיקה חינמית?", "acceptedAnswer": { "@type": "Answer", "text": "כן — הבדיקה חינמית לחלוטין, ללא הרשמה. הנתונים מעובדים בדפדפן ואינם נשמרים." } },
+        { "@type": "Question", "name": "כמה עולה להגיש השגת ארנונה?", "acceptedAnswer": { "@type": "Answer", "text": "הגשת השגה למנהל הארנונה היא חינם — מגישים בעצמכם תוך 90 יום מקבלת השובר. ארנונה חכמה מפיק את תיק ההשגה בחינם, להגשה עצמית." } },
+        { "@type": "Question", "name": "מה ההבדל בין השגה לערר על ארנונה?", "acceptedAnswer": { "@type": "Answer", "text": "השגה מוגשת תחילה למנהל הארנונה בעירייה, תוך 90 יום מקבלת השובר. אם ההשגה נדחית, ניתן להגיש ערר לוועדת ערר לארנונה תוך 30 יום מקבלת התשובה." } },
+        { "@type": "Question", "name": "מהן העילות הנפוצות לחיוב-יתר בארנונה?", "acceptedAnswer": { "@type": "Answer", "text": "אזור מס שגוי בשובר, שטח מחויב מנופח, סיווג נכס לא נכון, או הנחה שמגיעה ולא נוצלה. ארנונה חכמה משווה את נתוני השובר לצו הרשמי ומסמן אי-התאמות." } },
+        { "@type": "Question", "name": "באילו ערים הכלי לבדיקת ארנונה עובד?", "acceptedAnswer": { "@type": "Answer", "text": "תל אביב (כולל זיהוי אזור אוטומטי לפי כתובת), ירושלים, חיפה, ראשון לציון, פתח תקווה ואשדוד — לפי צו הארנונה הרשמי של כל עיר." } }
       ] }
     ]
   }
@@ -338,6 +342,15 @@
       <p class="text-sm text-slate-600 leading-relaxed">חשבון הארנונה מגיע פעם בשנה, ורובנו משלמים בלי לבדוק — ומעטים יודעים שהוא <strong class="text-slate-800">עשוי להיות שגוי</strong>. האמנו שכל אחד צריך לדעת אם הוא משלם יותר מדי, <strong class="text-slate-800">בלי לשלם לאיש מקצוע רק כדי לבדוק</strong>. אז בנינו כלי עצמאי, חינמי לחלוטין, שרץ כולו בדפדפן שלך (כלום לא נשמר) ומבוסס על צווי הארנונה הרשמיים — בלי מספרים מומצאים. <a href="/about" class="text-brand-700 hover:underline font-medium whitespace-nowrap">הסיפור המלא ←</a></p>
     </div>
 
+    <!-- Honesty index -->
+    <div class="mt-8 bg-white rounded-2xl border border-brand-100 shadow-sm p-5">
+      <div class="flex items-center gap-2 mb-2">
+        <span aria-hidden="true" class="text-xl">⚖️</span>
+        <p class="font-bold text-sm text-slate-900">מדד היושרה של ארנונה חכמה</p>
+      </div>
+      <p class="text-sm text-slate-600 leading-relaxed">אנחנו משווים את השובר שלך ל<strong class="text-slate-800">צו הארנונה הרשמי והפומבי</strong> — מספרים אמיתיים, <strong class="text-slate-800">אפס פיברוק</strong>. אם הבדיקה לא מוצאת חיוב‑יתר — נגיד לך את זה ישירות, ולא נמציא "עילה" שלא קיימת. אתה רואה רק את מה שהמנוע <strong class="text-slate-800">באמת מצא</strong> מול הצו.</p>
+    </div>
+
     <!-- Guides -->
     <div class="mt-8 bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
       <p class="font-bold text-sm mb-3">מדריכים שימושיים</p>
@@ -364,7 +377,11 @@
         <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">מה זה אזור ארנונה ואיך יודעים באיזה אזור אני?</summary><p class="text-slate-600 mt-1">תל אביב מחולקת ל‑5 אזורי מס, ולכל אזור תעריף שונה. מזינים כתובת והמערכת שולפת את האזור הרשמי ממפת העירייה.</p></details>
         <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">כמה זמן יש להגיש השגת ארנונה?</summary><p class="text-slate-600 mt-1">90 יום מקבלת השובר — מועד קשיח.</p></details>
         <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">כמה שנים אחורה אפשר לקבל החזר?</summary><p class="text-slate-600 mt-1">עד כ‑7 שנים אחורה, בכפוף לעובדות.</p></details>
-        <details class="pb-1"><summary class="font-semibold cursor-pointer">האם הבדיקה חינמית?</summary><p class="text-slate-600 mt-1">כן — חינם לגמרי, בלי הרשמה, והנתונים לא נשמרים.</p></details>
+        <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">האם הבדיקה חינמית?</summary><p class="text-slate-600 mt-1">כן — חינם לגמרי, בלי הרשמה, והנתונים לא נשמרים.</p></details>
+        <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">כמה עולה להגיש השגת ארנונה?</summary><p class="text-slate-600 mt-1">ההגשה למנהל הארנונה היא חינם — מגישים בעצמכם תוך 90 יום. ארנונה חכמה מפיק את תיק ההשגה בחינם, להגשה עצמית.</p></details>
+        <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">מה ההבדל בין השגה לערר?</summary><p class="text-slate-600 mt-1">קודם מגישים <strong>השגה</strong> למנהל הארנונה (90 יום). אם נדחתה — <strong>ערר</strong> לוועדת ערר תוך 30 יום מקבלת התשובה.</p></details>
+        <details class="border-b border-slate-100 pb-2"><summary class="font-semibold cursor-pointer">מהן העילות הנפוצות לחיוב‑יתר?</summary><p class="text-slate-600 mt-1">אזור מס שגוי, שטח מחויב מנופח, סיווג לא נכון, או הנחה שלא נוצלה.</p></details>
+        <details class="pb-1"><summary class="font-semibold cursor-pointer">באילו ערים הכלי עובד?</summary><p class="text-slate-600 mt-1">תל אביב (עם זיהוי אזור אוטומטי), ירושלים, חיפה, ראשון לציון, פתח תקווה ואשדוד.</p></details>
       </div>
     </div>
   </main>
