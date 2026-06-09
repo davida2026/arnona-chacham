@@ -324,7 +324,7 @@
           <a href="https://www.haifa.muni.il/" target="_blank" rel="noopener" class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold px-4 py-2 rounded-lg">לאתר עיריית חיפה ←</a>
         </div></div>`;
     }
-    h += '<p class="text-xs text-slate-400 mt-4 border-t border-slate-100 pt-3">ⓘ <strong>התוצאה היא אינדיקציה בלבד</strong> — לא ייעוץ ולא קביעה סופית. הקביעה והאימות הם מול העירייה / ועדת ערר. מבוסס צו הארנונה חיפה 2026.</p></div>';
+    h += '<p class="text-xs text-slate-400 mt-4 border-t border-slate-100 pt-3">ⓘ <strong>התוצאה היא אינדיקציה בלבד</strong> — לא ייעוץ ולא קביעה סופית. הקביעה והאימות הם מול העירייה / ועדת ערר. לייצוג או הליך מורכב — היוועצו בעורך/ת דין. מבוסס צו הארנונה חיפה 2026.</p></div>';
     const r = $('result'); r.innerHTML = h;
     const ob = document.getElementById('objBtn'); if (ob) ob.addEventListener('click', () => buildObjectionDoc(window.__lastResult));
     r.querySelectorAll('a[target="_blank"]').forEach(a => { a.addEventListener('click', function (e) { e.preventDefault(); let w=null; try { w=window.open(this.href,'_blank'); } catch(_){} if (w) { try { w.opener=null; } catch(_){} } else { window.location.href=this.href; } }); });
@@ -354,10 +354,10 @@
       + '<h1>תיק השגה לארנונה — חיפה (טיוטה)</h1>'
       + '<div class="muted">נוצר בתאריך '+today+' · עיריית חיפה · טיוטה להגשה עצמית — אינה ייעוץ משפטי</div>'
       + '<h2>פרטי הנכס והחיוב</h2><table><tr><th>פריט</th><th>ערך</th></tr>'+details+'</table>'
-      + '<h2>עילות ההשגה</h2><ol>'+groundsHtml+'</ol>'+discHtml
-      + '<h2>נוסח השגה לדוגמה</h2><pre>'+letter.replace(/</g,'&lt;')+'</pre>'
+      + '<h2>אי‑התאמות שזוהו (לבדיקה ולהשגה עצמית)</h2><ol>'+groundsHtml+'</ol>'+discHtml
+      + '<h2>תבנית מכתב כללית להתאמה עצמית</h2><pre>'+letter.replace(/</g,'&lt;')+'</pre>'
       + '<h2>איך מגישים</h2><ol><li>השגה למנהל הארנונה תוך <strong>90 יום</strong> מקבלת השובר (אתר עיריית חיפה).</li><li>אם העילה שטח — חוות דעת מודד מוסמך.</li><li>נדחתה? ערר לוועדת ערר תוך 30 יום.</li><li>החזר עד ~7 שנים אחורה.</li></ol>'
-      + '<div class="disc">טיוטה אוטומטית על בסיס הנתונים שהזנת וצו הארנונה הפומבי של חיפה 2026. המספרים הם הערכה — אמת/י מול השובר והעירייה. אין באמור ייעוץ משפטי.</div></body></html>';
+      + '<div class="disc">טיוטה אוטומטית על בסיס הנתונים שהזנת וצו הארנונה הפומבי של חיפה 2026. המספרים הם הערכה — אמת/י מול השובר והעירייה. אין באמור ייעוץ משפטי. כלי זה מספק מידע ותבנית להגשה עצמית בלבד; להליך מורכב או לייצוג מול ועדת ערר/בית משפט — מומלץ להיוועץ בעורך/ת דין.</div></body></html>';
     const w = window.open('', '_blank');
     if (!w) { alert('חלון ההדפסה נחסם — אפשר לאשר חלונות קופצים.'); return; }
     w.document.write(html); w.document.close(); w.focus(); setTimeout(()=>{ try{w.print();}catch(e){} }, 350);
